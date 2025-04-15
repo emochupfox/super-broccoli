@@ -38,7 +38,7 @@
       </thead>
       <tbody>
         <tr data-status="pending">
-          <td><img src="assets/images/tuition.jpg" alt="Tuition"></td>
+          <td><img src="assets/images/487824961_2001004976971916_2756452520669351226_n.jpg" alt="Tuition"></td>
           <td>Tuition Fee</td>
           <td>₱25,000</td>
           <td>Covers academic classes and lectures for the semester.</td>
@@ -46,7 +46,7 @@
           <td><button class="pay-btn" onclick="openModal('Tuition Fee', '₱25,000')">Pay Now</button></td>
         </tr>
         <tr data-status="paid">
-          <td><img src="assets/images/library.jpg" alt="Library"></td>
+          <td><img src="assets/images/487824961_2001004976971916_2756452520669351226_n.jpg" alt="Library"></td>
           <td>Library Fee</td>
           <td>₱1,000</td>
           <td>Access to digital and physical library services.</td>
@@ -54,7 +54,7 @@
           <td></td>
         </tr>
         <tr data-status="pending">
-          <td><img src="assets/images/misc.jpg" alt="Miscellaneous"></td>
+          <td><img src="assets/images/487824961_2001004976971916_2756452520669351226_n.jpg" alt="Miscellaneous"></td>
           <td>Miscellaneous Fee</td>
           <td>₱3,500</td>
           <td>Used for maintenance, ID printing, and campus services.</td>
@@ -94,7 +94,7 @@
   
     function submitPayment(event) {
       event.preventDefault();
-      alert("Payment submitted successfully!");
+      alert("✅ Payment submitted successfully!");
       closeModal();
     }
   
@@ -103,16 +103,22 @@
       if (event.target === modal) {
         closeModal();
       }
-
-      function submitPayment(event) {
-        event.preventDefault();
-        
-        alert("✅ Payment submitted successfully!");
-        closeModal();
-      }     
-
     };
+  
+    // ✅ Add this function for filtering
+    function filterFees(status) {
+      const rows = document.querySelectorAll(".fee-table tbody tr");
+      rows.forEach(row => {
+        const rowStatus = row.getAttribute("data-status");
+        if (status === "all" || rowStatus === status) {
+          row.style.display = "";
+        } else {
+          row.style.display = "none";
+        }
+      });
+    }
   </script>
+  
 
 </body>
 </html>
