@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/student.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand">PAYFEES</div>
+    <nav class="nav-links">
+      <a href="student-dashboard.html">← Back to Dashboard</a>
+    </nav>
+  </header>
+
+  <main class="dashboard-content">
+    <h2>🛒 Checkout</h2>
+
+    <div id="cartContainer"></div>
+
+    <div style="margin-top: 20px;">
+      <h3>Total: <span id="cartTotal">₱0</span></h3>
+      <button onclick="submitOrder()" class="pay-btn">Place Order</button>
+    </div>
+  </main>
+
+  <script>
+    // Display cart
+    function loadCart() {
+      const cart = JSON.parse(localStorage.getItem("merchCart")) || [];
+      const container = document.getElementById("cartContainer");
+      const totalEl = document.getElementById("cartTotal");
+      container.innerHTML = "";
+
+      let total = 0;
+      if (cart.length === 0) {
+        container.innerHTML = "<p>Your cart is empty.</p>";
+        totalEl.textContent = "₱0";
+        return;
+      }
+
+      const table = document.createElement("table");
+      table.className = "fee-table";
+      table.innerHTML = `
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${cart.map(item => {
+            total += item.price;
+            return `<tr><td>${item.name}</td><td>₱${item.price.toLocaleString()}</td></tr>`;
+          }).join("")}
+        </tbody>
+      `;
+
+      {
+        addEventListener
+      }
+      container.appendChild(table);
+      totalEl.textContent = `₱${total.toLocaleString()}`;
+    }
+
+    function submitOrder() {
+      alert("✅ Order placed successfully!");
+      localStorage.removeItem("merchCart");
+      loadCart();
+    }
+
+    window.onload = loadCart;
+  </script>
+</body>
+</html>

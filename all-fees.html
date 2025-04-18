@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>All Fees</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/student.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="brand">PAYFEES</div>
+    <nav class="nav-links">
+      <a href="student-dashboard.html">← Back to Dashboard</a>
+    </nav>
+  </header>
+
+  <div class="table-container">
+    <h2>All Fees</h2>
+  
+    <div class="filter-buttons">
+      <button onclick="filterFees('all')">All</button>
+      <button onclick="filterFees('pending')">Pending</button>
+      <button onclick="filterFees('paid')">Paid</button>
+    </div>
+  
+    <table class="fee-table">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Fee Name</th>
+          <th>Price</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-status="pending">
+          <td><img src="assets/images/487824961_2001004976971916_2756452520669351226_n.jpg" alt="Tuition"></td>
+          <td>Tuition Fee</td>
+          <td>₱25,000</td>
+          <td>Covers academic classes and lectures for the semester.</td>
+          <td><span class="status-label status-pending">Pending</span></td>
+          <td><button class="pay-btn" onclick="openModal('Tuition Fee', '₱25,000')">Pay Now</button></td>
+        </tr>
+        <tr data-status="paid">
+          <td><img src="assets/images/487824961_2001004976971916_2756452520669351226_n.jpg" alt="Library"></td>
+          <td>Library Fee</td>
+          <td>₱1,000</td>
+          <td>Access to digital and physical library services.</td>
+          <td><span class="status-label status-paid">Paid</span></td>
+          <td></td>
+        </tr>
+        <tr data-status="pending">
+          <td><img src="assets/images/487824961_2001004976971916_2756452520669351226_n.jpg" alt="Miscellaneous"></td>
+          <td>Miscellaneous Fee</td>
+          <td>₱3,500</td>
+          <td>Used for maintenance, ID printing, and campus services.</td>
+          <td><span class="status-label status-pending">Pending</span></td>
+          <td><button class="pay-btn" onclick="openModal('Miscellaneous Fee', '₱3,500')">Pay Now</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="payment-modal" id="paymentModal">
+    <div class="payment-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h2>Payment Form</h2>
+      <form onsubmit="submitPayment(event)">
+        <label for="feeName">Fee Name:</label>
+        <input type="text" id="feeName" readonly />
+  
+        <label for="amount">Amount:</label>
+        <input type="text" id="amount" readonly />
+  
+        <button type="submit" class="pay-btn">Submit Payment</button>
+      </form>
+    </div>
+  </div>
+  
+  <script>
+    function openModal(feeName, amount) {
+      document.getElementById("feeName").value = feeName;
+      document.getElementById("amount").value = amount;
+      document.getElementById("paymentModal").style.display = "flex";
+    }
+  
+    function closeModal() {
+      document.getElementById("paymentModal").style.display = "none";
+    }
+  
+    function submitPayment(event) {
+      event.preventDefault();
+      alert("✅ Payment submitted successfully!");
+      closeModal();
+    }
+  
+    window.onclick = function (event) {
+      const modal = document.getElementById("paymentModal");
+      if (event.target === modal) {
+        closeModal();
+      }
+    };
+  
+    // ✅ Add this function for filtering
+    function filterFees(status) {
+      const rows = document.querySelectorAll(".fee-table tbody tr");
+      rows.forEach(row => {
+        const rowStatus = row.getAttribute("data-status");
+        if (status === "all" || rowStatus === status) {
+          row.style.display = "";
+        } else {
+          row.style.display = "none";
+        }
+      });
+    }
+  </script>
+  
+
+</body>
+</html>

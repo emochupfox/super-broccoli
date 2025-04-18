@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Receipts</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/student.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="brand">PAYFEES</div>
+    <nav class="nav-links">
+      <a href="student-dashboard.html">← Back to Dashboard</a>
+    </nav>
+  </header>
+
+  <div class="table-container">
+    <div class="pagination-controls">
+      <button onclick="changePage(-1)">Previous</button>
+      <span id="pageIndicator">Page 1</span>
+      <button onclick="changePage(1)">Next</button>
+    </div>
+    
+    <div class="total-spent">
+      Total Spent: <strong id="totalAmount">₱0</strong>
+    </div>
+    
+    <h2 class="receipt-title">OFFICIAL RECEIPT</h2>
+    
+
+    <div class="filter-bar">
+      <input type="text" id="searchInput" placeholder="Search by Receipt ID or Fee Name" onkeyup="filterReceipts()" />
+    </div>
+
+    <table class="fee-table" id="receiptTable">
+      <thead>
+        <tr>
+          <th>Receipt ID</th>
+          <th>Fee Name</th>
+          <th>Amount</th>
+          <th>Date Paid</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>#001</td>
+          <td>Tuition Fee</td>
+          <td>₱25,000</td>
+          <td>April 10, 2025</td>
+          <td><span class="status-label status-paid">Paid</span></td>
+          <td><a href="assets/receipts/a23757b7eca4db30b6f3f5c39ded50eb.jpg" class="pay-btn" download>Download</a>
+          </td>
+        </tr>
+      <tr>
+          <td>#002</td>
+          <td>Library Fee</td>
+          <td>₱1,000</td>
+          <td>April 11, 2025</td>
+          <td><span class="status-label status-paid">Paid</span></td>
+          <td><a href="assets/receipts/a23757b7eca4db30b6f3f5c39ded50eb.jpg" class="pay-btn" download>Download</a>
+          </tr>
+      <tr>
+          <td>#003</td>
+          <td>Miscellaneous</td>
+          <td>₱3,500</td>
+          <td>April 12, 2025</td>
+          <td><span class="status-label status-paid">Paid</span></td>
+          <td><a href="assets/receipts/a23757b7eca4db30b6f3f5c39ded50eb.jpg" class="pay-btn" download>Download</a>
+          </tr>
+      <tr>
+          <td>#003</td>
+          <td>Miscellaneous</td>
+          <td>₱3,500</td>
+          <td>April 12, 2025</td>
+          <td><span class="status-label status-paid">Paid</span></td>
+          <td><a href="assets/receipts/a23757b7eca4db30b6f3f5c39ded50eb.jpg" class="pay-btn" download>Download</a>
+          </tr>
+      <tr>
+            <td>#003</td>
+            <td>Miscellaneous</td>
+            <td>₱3,500</td>
+            <td>April 12, 2025</td>
+            <td><span class="status-label status-paid">Paid</span></td>
+            <td><a href="assets/receipts/a23757b7eca4db30b6f3f5c39ded50eb.jpg" class="pay-btn" download>Download</a>
+        </tr>
+        <tr>
+          <td>#003</td>
+          <td>Miscellaneous</td>
+          <td>₱3,500</td>
+          <td>April 12, 2025</td>
+          <td><span class="status-label status-paid">Paid</span></td>
+          <td><a href="assets/receipts/a23757b7eca4db30b6f3f5c39ded50eb.jpg" class="pay-btn" download>Download</a>
+          </tr>
+      <tr>
+            <td>#003</td>
+            <td>Miscellaneous</td>
+            <td>₱3,500</td>
+            <td>April 12, 2025</td>
+            <td><span class="status-label status-paid">Paid</span></td>
+            <td><a href="assets/receipts/a23757b7eca4db30b6f3f5c39ded50eb.jpg" class="pay-btn" download>Download</a>
+        </tr>
+      <tr>
+          <td>#003</td>
+          <td>Miscellaneous</td>
+          <td>₱3,500</td>
+          <td>April 12, 2025</td>
+          <td><span class="status-label status-paid">Paid</span></td>
+          <td><a href="assets/receipts/a23757b7eca4db30b6f3f5c39ded50eb.jpg" class="pay-btn" download>Download</a>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    function filterReceipts() {
+      const input = document.getElementById("searchInput").value.toLowerCase();
+      const rows = document.querySelectorAll("#receiptTable tbody tr");
+
+      rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(input) ? "" : "none";
+      });
+    }
+    
+    let currentPage = 1;
+    const rowsPerPage = 5;
+  
+    function paginateReceipts() {
+      const rows = document.querySelectorAll("#receiptTable tbody tr");
+      const totalRows = rows.length;
+      const start = (currentPage - 1) * rowsPerPage;
+      const end = start + rowsPerPage;
+  
+      rows.forEach((row, index) => {
+        row.style.display = (index >= start && index < end) ? "" : "none";
+      });
+  
+      // Update page number
+      document.getElementById("pageIndicator").textContent = `Page ${currentPage}`;
+  
+      // Calculate total
+      calculateTotalSpent(rows, start, end);
+    }
+  
+    function calculateTotalSpent(rows, start, end) {
+      let total = 0;
+      for (let i = start; i < end && i < rows.length; i++) {
+        const priceText = rows[i].children[2].textContent.replace(/[₱,]/g, '');
+        const amount = parseFloat(priceText) || 0;
+        total += amount;
+      }
+      document.getElementById("totalAmount").textContent = `₱${total.toLocaleString()}`;
+    }
+  
+    function changePage(direction) {
+      const rows = document.querySelectorAll("#receiptTable tbody tr");
+      const maxPage = Math.ceil(rows.length / rowsPerPage);
+      currentPage += direction;
+  
+      if (currentPage < 1) currentPage = 1;
+      if (currentPage > maxPage) currentPage = maxPage;
+  
+      paginateReceipts();
+    }
+  
+    // Run on load
+    window.onload = function () {
+      paginateReceipts();
+    };
+
+  </script>
+
+</body>
+</html>
