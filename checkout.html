@@ -3,19 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<<<<<<< HEAD
   <title>Checkout</title>
-=======
-  <title>Merch Checkout</title>
->>>>>>> d23461fac134d25602d3243322bdc12d737b5547
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/student.css" />
 </head>
 <body>
-<<<<<<< HEAD
-=======
 
->>>>>>> d23461fac134d25602d3243322bdc12d737b5547
   <header class="navbar">
     <div class="brand">PAYFEES</div>
     <nav class="nav-links">
@@ -24,97 +17,25 @@
   </header>
 
   <main class="dashboard-content">
-<<<<<<< HEAD
-    <h2>🛒 Checkout</h2>
-
-    <div id="cartContainer"></div>
-
-    <div style="margin-top: 20px;">
-      <h3>Total: <span id="cartTotal">₱0</span></h3>
-      <button onclick="submitOrder()" class="pay-btn">Place Order</button>
-    </div>
-  </main>
-
-  <script>
-    // Display cart
-    function loadCart() {
-      const cart = JSON.parse(localStorage.getItem("merchCart")) || [];
-      const container = document.getElementById("cartContainer");
-      const totalEl = document.getElementById("cartTotal");
-      container.innerHTML = "";
-
-      let total = 0;
-      if (cart.length === 0) {
-        container.innerHTML = "<p>Your cart is empty.</p>";
-        totalEl.textContent = "₱0";
-        return;
-      }
-
-      const table = document.createElement("table");
-      table.className = "fee-table";
-      table.innerHTML = `
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${cart.map(item => {
-            total += item.price;
-            return `<tr><td>${item.name}</td><td>₱${item.price.toLocaleString()}</td></tr>`;
-          }).join("")}
-        </tbody>
-      `;
-
-      {
-        addEventListener
-      }
-      container.appendChild(table);
-      totalEl.textContent = `₱${total.toLocaleString()}`;
-    }
-
-    function submitOrder() {
-      alert("✅ Order placed successfully!");
-      localStorage.removeItem("merchCart");
-      loadCart();
-    }
-
-    window.onload = loadCart;
-  </script>
-=======
-    <h2 class="section-title">Merch Checkout</h2>
+    <h2 class="section-title">🛒 Checkout</h2>
 
     <div class="checkout-container">
       <table class="fee-table">
         <thead>
           <tr>
             <th>Item</th>
-            <th>Description</th>
             <th>Price</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody id="cartItems">
-          <!-- Merch items dynamically added here -->
-          <tr>
-            <td>University Hoodie</td>
-            <td>Comfortable and stylish</td>
-            <td>₱950</td>
-            <td><button class="remove-btn" onclick="removeItem(this)">Remove</button></td>
-          </tr>
-          <tr>
-            <td>Campus Tumbler</td>
-            <td>500ml stainless steel bottle</td>
-            <td>₱300</td>
-            <td><button class="remove-btn" onclick="removeItem(this)">Remove</button></td>
-          </tr>
+          <!-- Items will be rendered here -->
         </tbody>
       </table>
 
       <div class="total-section">
-        <h3>Total: <span id="totalAmount">₱1250</span></h3>
-        <button class="pay-btn" onclick="openCheckoutModal()">Proceed to Buy</button>
+        <h3>Total: <span id="totalAmount">₱0</span></h3>
+        <button class="pay-btn" onclick="openCheckoutModal()">Place Order</button>
       </div>
     </div>
   </main>
@@ -146,24 +67,54 @@
   </div>
 
   <script>
-    function removeItem(button) {
-      const row = button.closest("tr");
-      row.remove();
-      updateTotal();
+    function getCart() {
+      return JSON.parse(localStorage.getItem("merchCart")) || [];
     }
 
-    function updateTotal() {
+    function saveCart(cart) {
+      localStorage.setItem("merchCart", JSON.stringify(cart));
+    }
+
+    function renderCart() {
+      const cart = getCart();
+      const tbody = document.getElementById("cartItems");
+      const totalEl = document.getElementById("totalAmount");
       let total = 0;
-      const rows = document.querySelectorAll("#cartItems tr");
-      rows.forEach(row => {
-        const priceCell = row.children[2];
-        const price = parseInt(priceCell.textContent.replace(/[₱,]/g, ''));
-        total += price;
+      tbody.innerHTML = "";
+
+      if (cart.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="3">Your cart is empty.</td></tr>';
+        totalEl.textContent = "₱0";
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        total += item.price;
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${item.name}</td>
+          <td>₱${item.price.toLocaleString()}</td>
+          <td><button class="remove-btn" onclick="removeItem(${index})">Remove</button></td>
+        `;
+        tbody.appendChild(row);
       });
-      document.getElementById("totalAmount").textContent = `₱${total.toLocaleString()}`;
+
+      totalEl.textContent = `₱${total.toLocaleString()}`;
+    }
+
+    function removeItem(index) {
+      const cart = getCart();
+      cart.splice(index, 1);
+      saveCart(cart);
+      renderCart();
     }
 
     function openCheckoutModal() {
+      const cart = getCart();
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
       document.getElementById("paymentModal").style.display = "flex";
     }
 
@@ -174,7 +125,9 @@
     function submitCheckout(event) {
       event.preventDefault();
       alert("✅ Purchase completed!");
+      localStorage.removeItem("merchCart");
       closeModal();
+      renderCart();
     }
 
     window.onclick = function (event) {
@@ -182,45 +135,7 @@
       if (event.target === modal) closeModal();
     };
 
-    let cart = [];
-
-function addToCart(name, price) {
-  const existing = cart.find(item => item.name === name);
-  if (existing) {
-    existing.qty++;
-  } else {
-    cart.push({ name, price, qty: 1 });
-  }
-  renderCart();
-}
-
-function renderCart() {
-  const tbody = document.querySelector("#cartTable tbody");
-  if (!tbody) return;
-  
-  tbody.innerHTML = "";
-
-  cart.forEach((item, i) => {
-    tbody.innerHTML += `
-      <tr>
-        <td>${item.name}</td>
-        <td>₱${item.price}</td>
-        <td>${item.qty}</td>
-        <td>₱${item.price * item.qty}</td>
-        <td><button onclick="removeItem(${i})">X</button></td>
-      </tr>
-    `;
-  });
-}
-
-function removeItem(index) {
-  cart.splice(index, 1);
-  renderCart();
-}
-
-
+    window.onload = renderCart;
   </script>
-
->>>>>>> d23461fac134d25602d3243322bdc12d737b5547
 </body>
 </html>
