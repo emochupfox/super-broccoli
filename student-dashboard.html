@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -249,3 +250,229 @@
   <script src="js/student.js"></script>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/student.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand">PAYFEES</div>
+  
+    <nav class="nav-links" id="navLinks">
+      <a href="student-dashboard.html" class="active">HOME</a>
+  <a href="receipts.html">RECEIPTS</a>
+  <a href="#">FEEDBACK</a>
+    
+      <div class="dropdown">
+        <button class="dropbtn">👤 My Account ▾</button>
+        <div class="dropdown-content">
+          <a href="#">Profile</a>
+          <a href="#" onclick="logout()">Logout</a>
+        </div>
+      </div>
+    </nav>
+    
+  
+    <div class="menu-icon" onclick="toggleNav()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    
+  </header>
+  
+  <div class="welcome-banner">
+    <h2 id="welcomeText"></h2>
+  </div>
+  
+
+  <main class="dashboard-content">
+    <h2 class="section-title" id="fees">CURRENT FEES TO PAY THIS SEM</h2>
+
+    <div style="text-align: right; margin-top: -25px; margin-bottom: 10px;">
+      <a href="all-fees.html" class="view-all-btn">View All →</a>
+    </div>
+    
+
+    <div class="scroll-container-wrapper">
+      <div class="filter-buttons">
+        <button onclick="filterFees('all')">All</button>
+        <button onclick="filterFees('pending')">Pending</button>
+        <button onclick="filterFees('paid')">Paid</button>
+      </div>
+      
+      <button class="scroll-btn" onclick="scrollNext()">Next →</button>
+      <div class="scroll-container" id="feeCardContainer">
+    
+        <div class="fee-card" data-status="pending">
+          <img src="assets/images/487824961_2001004976971916_2756452520669351226_n.jpg" alt="Tuition Fee">
+          <div class="card-details">
+            <p>Tuition Fee</p>
+            <p>₱25,000</p>
+            <p class="status-label status-pending">Pending</p>
+          </div>
+        </div>
+        
+        <div class="fee-card" data-status="paid">
+          <img src="assets/images/487824961_2001004976971916_2756452520669351226_n.jpg" alt="Tuition Fee">
+          <div class="card-details">
+            <p>Library Fee</p>
+            <p>₱1,000</p>
+            <p class="status-label status-paid">Paid</p>
+          </div>
+        </div>
+        
+        <div class="fee-card" data-status="pending">
+          <img src="assets/images/487824961_2001004976971916_2756452520669351226_n.jpg" alt="Tuition Fee">
+          <div class="card-details">
+            <p>Tuition Fee</p>
+            <p>₱25,000</p>
+            <p class="status-label status-pending">Pending</p>
+          </div>
+        </div>
+
+        <div class="fee-card" data-status="paid">
+          <img src="assets/images/487824961_2001004976971916_2756452520669351226_n.jpg" alt="Tuition Fee">
+          <div class="card-details">
+            <p>Library Fee</p>
+            <p>₱1,000</p>
+            <p class="status-label status-paid">Paid</p>
+          </div>
+        </div>
+
+        <div class="fee-card" data-status="pending">
+          <img src="assets/images/487824961_2001004976971916_2756452520669351226_n.jpg" alt="Tuition Fee">
+          <div class="card-details">
+            <p>Tuition Fee</p>
+            <p>₱25,000</p>
+            <p class="status-label status-pending">Pending</p>
+          </div>
+        </div>
+
+        <div class="fee-card" data-status="paid">
+          <img src="assets/images/487824961_2001004976971916_2756452520669351226_n.jpg" alt="Tuition Fee">
+          <div class="card-details">
+            <p>Library Fee</p>
+            <p>₱1,000</p>
+            <p class="status-label status-paid">Paid</p>
+          </div>
+        </div>
+
+        <div class="fee-card" data-status="pending">
+          <img src="assets/images/487824961_2001004976971916_2756452520669351226_n.jpg" alt="Tuition Fee">
+          <div class="card-details">
+            <p>Tuition Fee</p>
+            <p>₱25,000</p>
+            <p class="status-label status-pending">Pending</p>
+          </div>
+        </div>
+
+        <div class="fee-card" data-status="paid">
+          <img src="assets/images/487824961_2001004976971916_2756452520669351226_n.jpg" alt="Tuition Fee">
+          <div class="card-details">
+            <p>Library Fee</p>
+            <p>₱1,000</p>
+            <p class="status-label status-paid">Paid</p>
+          </div>
+        </div>
+
+        <div class="fee-card" data-status="pending">
+          <img src="assets/images/487824961_2001004976971916_2756452520669351226_n.jpg" alt="Tuition Fee">
+          <div class="card-details">
+            <p>Tuition Fee</p>
+            <p>₱25,000</p>
+            <p class="status-label status-pending">Pending</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    
+
+
+    <h2 class="section-title" id="merch">AVAILABLE MERCH</h2>
+
+    <div style="text-align: right; margin-top: -25px; margin-bottom: 10px;">
+      <a href="all-merch.html" class="view-all-btn">View All →</a>
+    </div>
+    
+
+<div class="scroll-container-wrapper">
+  <button class="scroll-btn" onclick="scrollMerch()">Next →</button>
+  <div class="scroll-container" id="merchContainer">
+
+    <div class="merch-card">
+      <div class="merch-badge">NEW</div>
+      <img src="assets/images/7e7043853667c249903bd4b41a3e2500.jpg" alt="University Hoodie">
+      <div class="merch-details">
+        <h4>University Hoodie</h4>
+        <p>Comfortable and stylish</p>
+        <strong>₱950</strong>
+        <button class="pay-btn" onclick="openModal('University Hoodie', '₱950')">Buy Now</button>
+      </div>
+    </div>
+
+    <div class="merch-card">
+      <div class="merch-badge badge-limited">LIMITED</div>
+      <img src="assets/images/7e7043853667c249903bd4b41a3e2500.jpg" alt="Limited Hoodie">
+      <div class="merch-details">
+        <h4>Limited Edition Hoodie</h4>
+        <p>Warm, cozy, and limited!</p>
+        <strong>₱1200</strong>
+        <button class="pay-btn" onclick="openModal('University Hoodie', '₱1200')">Buy Now</button>
+      </div>
+    </div>
+    
+
+    <div class="merch-card">
+      <div class="merch-badge badge-limited">LIMITED</div>
+      <img src="assets/images/7e7043853667c249903bd4b41a3e2500.jpg" alt="Another Hoodie">
+      <div class="merch-details">
+        <h4>Limited Edition Hoodie</h4>
+        <p>Warm, cozy, and limited!</p>
+        <strong>₱1200</strong>
+      </div>
+    </div>
+
+
+    <div class="merch-card">
+      <div class="merch-badge">NEW</div>
+      <img src="assets/images/7e7043853667c249903bd4b41a3e2500.jpg" alt="Campus Tumbler">
+      <div class="merch-details">
+        <h4>Campus Tumbler</h4>
+        <p>500ml stainless steel bottle</p>
+        <strong>₱300</strong>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="payment-modal" id="paymentModal">
+  <div class="payment-content">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <h2>Payment Form</h2>
+    <form onsubmit="submitPayment(event)">
+      <label for="feeName">Item Name:</label>
+      <input type="text" id="feeName" readonly />
+
+      <label for="amount">Amount:</label>
+      <input type="text" id="amount" readonly />
+
+      <button type="submit" class="pay-btn">Submit Payment</button>
+    </form>
+  </div>
+</div>
+
+  </main>
+
+  <script src="js/student.js"></script>
+</body>
+</html>
+>>>>>>> d23461fac134d25602d3243322bdc12d737b5547
