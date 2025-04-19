@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pending and Paid Payments</title>
+    <style>
+    body {
+    font-family: sans-serif;
+    margin: 0; 
+    background-color: white; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh; 
+}
+
+.payment-section {
+    background-color: #2c2c2c;
+    color: #d4d4d4; 
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
+    width: 80%; 
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+}
+
+h2 {
+    color: green; 
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid #444; 
+}
+
+th {
+    background-color: #3e3e3e; 
+    font-weight: bold;
+    color: #d4d4d4;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #333; 
+}
+
+.pending td:last-child {
+    color: #d19a66; 
+    font-weight: bold;
+}
+
+.paid td:last-child {
+    color: #98c379; 
+    font-weight: bold;
+}
+
+.pay-button-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pay-button {
+    background-color: #e06c75; 
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease; 
+}
+
+.pay-button:hover {
+    background-color: #c65663; 
+}
+
+.ccs{
+    position: absolute;
+    width: 83px;
+    height: 83px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.wmsu{
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="payment-section">
+        <h2>PAYMENT STATUS</h2>
+        <img class="wmsu"src="C:\Users\Administrator\Documents\GitHub\super-broccoli\assets\images\305211269_109996365185914_8153444693508705122_n.jpg" >
+        <img class="ccs" src="assets\images\462557624_1319345839200938_7914858406326357209_n.jpg"/>
+        <table>
+            <thead>
+                <tr>
+                    <th>Payments</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="pending">
+                    <td>Venom</td>
+                    <td>2025-04-01</td>
+                    <td>PHP 100</td>
+                    <td>Pending</td>
+                </tr>
+                <tr class="paid">
+                    <td>CSS-CSC</td>
+                    <td>2025-04-06</td>
+                    <td>PHP 200.00</td>
+                    <td>Paid</td>
+                </tr>
+               <tr class="pending">
+                    <td>British Insurance</td>
+                    <td>2025-04-01</td>
+                    <td>PHP 70.00</td>
+                    <td>Pending</td>
+                </tr>
+              <tr class="paid">
+                    <td>Gender Club</td> 
+                    <td>2025-04-06</td>
+                    <td>PHP 150.00</td>
+                    <td>Paid</td>
+                </tr>
+              <tr class="paid">
+                    <td>phiCSS</td>
+                    <td>2025-04-01</td>
+                    <td>PHP 100.00</td>
+                    <td>Paid</td>
+                </tr>
+              <tr class="paid">
+                    <td>Muslim Student Association</td> 
+                    <td>2025-04-06</td>
+                    <td>PHP 50.00</td>
+                    <td>Paid</td>
+                </tr>
+                <tr class="pending">
+                    <td>University Digest</td> 
+                    <td>2025-04-06</td>
+                    <td>PHP 100.00</td>
+                    <td>Pending</td>
+                </tr>
+                </tbody>
+        </table>
+    </div>
+</body>
+</html>
