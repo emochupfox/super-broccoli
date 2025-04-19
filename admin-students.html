@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Admin - Manage Students</title>
-  <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/admin.css" />
 </head>
 <body>
@@ -12,7 +11,7 @@
     <div class="brand">PAYFEES ADMIN</div>
     <nav class="nav-links">
       <a href="admin-dashboard.html">Dashboard</a>
-      <a href="admin-students.html">Students</a>
+      <a href="admin-students.html" class="active">Students</a>
       <a href="#">Fees</a>
       <a href="#">Logout</a>
     </nav>
@@ -22,7 +21,7 @@
     <h2>Student Management</h2>
 
     <div class="table-wrapper">
-      <table class="student-table">
+      <table class="student-table" id="studentTable">
         <thead>
           <tr>
             <th>Name</th>
@@ -33,130 +32,14 @@
             <th>Action</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>Balano, Missy E. M</td>
-            <td>8888-99999</td>
-            <td>BSCS</td>
-            <td>2C</td>
-            <td>Pending</td>
-            <td>
-              <button class="view-btn" onclick="openModal()">View</button>
-              <button class="edit-btn">Edit</button>
-              <button class="remove-btn">Remove</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Anastacio, Mattjhevic</td>
-            <td>202301234</td>
-            <td>BSCS</td>
-            <td>2C</td>
-            <td>Pending</td>
-            <td>
-              <button class="view-btn" onclick="openModal()">View</button>
-              <button class="edit-btn">Edit</button>
-              <button class="remove-btn">Remove</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Salilig, Gian</td>
-            <td>202301245</td>
-            <td>BSCS</td>
-            <td>2C</td>
-            <td>Pending</td>
-            <td>
-              <button class="view-btn" onclick="openModal()">View</button>
-              <button class="edit-btn">Edit</button>
-              <button class="remove-btn">Remove</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Flore, JM</td>
-            <td>202301256</td>
-            <td>BSCS</td>
-            <td>2C</td>
-            <td>Pending</td>
-            <td>
-              <button class="view-btn" onclick="openModal()">View</button>
-              <button class="edit-btn">Edit</button>
-              <button class="remove-btn">Remove</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Aleria, Angelo</td>
-            <td>202301267</td>
-            <td>BSCS</td>
-            <td>2C</td>
-            <td>Pending</td>
-            <td>
-              <button class="view-btn" onclick="openModal()">View</button>
-              <button class="edit-btn">Edit</button>
-              <button class="remove-btn">Remove</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Bobon, Stephen</td>
-            <td>202301278</td>
-            <td>BSCS</td>
-            <td>2C</td>
-            <td>Pending</td>
-            <td>
-              <button class="view-btn" onclick="openModal()">View</button>
-              <button class="edit-btn">Edit</button>
-              <button class="remove-btn">Remove</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Felix, Cyrell</td>
-            <td>202301289</td>
-            <td>BSCS</td>
-            <td>2C</td>
-            <td>Pending</td>
-            <td>
-              <button class="view-btn" onclick="openModal()">View</button>
-              <button class="edit-btn">Edit</button>
-              <button class="remove-btn">Remove</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Manolo, kyle</td>
-            <td>202301282</td>
-            <td>BSCS</td>
-            <td>2C</td>
-            <td>Pending</td>
-            <td>
-              <button class="view-btn" onclick="openModal()">View</button>
-              <button class="edit-btn">Edit</button>
-              <button class="remove-btn">Remove</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Caxiel, Kevin</td>
-            <td>202301282</td>
-            <td>BSCS</td>
-            <td>2C</td>
-            <td>Pending</td>
-            <td>
-              <button class="view-btn" onclick="openModal()">View</button>
-              <button class="edit-btn">Edit</button>
-              <button class="remove-btn">Remove</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Cena, John</td>
-            <td>202301283</td>
-            <td>BSCS</td>
-            <td>2C</td>
-            <td>Pending</td>
-            <td>
-              <button class="view-btn" onclick="openModal()">View</button>
-              <button class="edit-btn">Edit</button>
-              <button class="remove-btn">Remove</button>
-            </td>
-          </tr>
+        <tbody id="studentTableBody">
+          <!-- Table rows will be rendered by JS -->
         </tbody>
       </table>
     </div>
+
+    <!-- ✅ Pagination buttons container -->
+    <div id="pagination" class="pagination"></div>
   </main>
 
   <!-- View Modal -->
@@ -171,6 +54,7 @@
       <p><strong>Status:</strong> Pending</p>
     </div>
   </div>
+
   <script src="js/admin.js"></script>
 </body>
 </html>

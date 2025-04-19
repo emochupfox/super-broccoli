@@ -188,5 +188,31 @@ body {
     font-weight: bold;
     cursor: pointer;
   }
-  
+
+/* Pagination Styles */
+.pagination {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  background-color: #004d00;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  margin: 0 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.pagination button:hover {
+  background-color: #006600;
+}
+
+.pagination button.active {
+  background-color: #009900;
+}
+
   
