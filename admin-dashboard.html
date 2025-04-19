@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand">PAYFEES ADMIN</div>
+    <nav class="nav-links">
+      <a href="#">Dashboard</a>
+      <a href="#">Students</a>
+      <a href="#">Fees</a>
+      <a href="#" onclick="logout()">Logout</a>
+    </nav>
+  </header>
+
+  <main class="admin-dashboard">
+    <section class="admin-card">
+      <h2>📄 Pending Clearances</h2>
+      <div id="pendingList">
+        <!-- Dynamic content here -->
+        <p class="placeholder">No pending clearances yet.</p>
+      </div>
+    </section>
+
+    <section class="admin-card">
+      <h2>💰 Manage Fees</h2>
+      <button class="primary-btn" onclick="openAddFee()">+ Add New Fee</button>
+    </section>
+  </main>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

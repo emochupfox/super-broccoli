@@ -1,0 +1,192 @@
+/* General layout */
+body {
+    background-color: #f5f7fa;
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .navbar {
+    background-color: #003300;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 30px;
+    align-items: center;
+  }
+  
+  .navbar .brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 0.95rem;
+  }
+  
+  .nav-links a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Main dashboard */
+  .admin-dashboard {
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .admin-card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+  
+  .admin-card h2 {
+    margin-top: 0;
+    color: #333;
+  }
+  
+  .primary-btn {
+    background-color: #006400;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  
+  .primary-btn:hover {
+    background-color: #004c00;
+  }
+  
+  .placeholder {
+    color: #777;
+    font-style: italic;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .admin-dashboard {
+      padding: 20px;
+    }
+  
+    .primary-btn {
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+/*STUD MANAGEMENT TABLE SEC*/
+.admin-container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #f7f9fb;
+    border-radius: 10px;
+  }
+  
+  .table-wrapper {
+    overflow-x: auto;
+    text-align: center;
+  }
+  
+  .student-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: rgb(220, 220, 220);
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  
+  .student-table th,
+  .student-table td {
+    padding: 14px 18px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .student-table th {
+    background-color: #2e2e2e; /* dark gray */
+    color: #ffffff;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  
+  .view-btn {
+    background-color: #002053;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    margin-right: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .edit-btn {
+    background-color: #facc15;
+    color: black;
+    border: none;
+    padding: 6px 12px;
+    margin-right: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .remove-btn {
+    background-color: #8d0000;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Modal Styling */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 30px;
+    border-radius: 8px;
+    width: 400px;
+    text-align: left;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  }
+  
+  .close-btn {
+    color: #aaa;
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  
