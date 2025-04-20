@@ -1,4 +1,11 @@
-const students = [
+// CHECKS CURRENT PAGE
+const currentPath = window.location.pathname;
+
+// =====================
+// STUDENT MANAGEMENT
+// =====================
+if (currentPath.includes("admin-students.html")) {
+  const students = [
     { name: "Balano, Missy E. M", id: "8888-99999", course: "BSCS", section: "2C", status: "Pending" },
     { name: "Anastacio, Mattjhevic", id: "202301234", course: "BSCS", section: "2C", status: "Pending" },
     { name: "Salilig, Gian", id: "202301245", course: "BSCS", section: "2C", status: "Pending" },
@@ -8,18 +15,18 @@ const students = [
     { name: "Felix, Cyrell", id: "202301289", course: "BSCS", section: "2C", status: "Pending" },
     { name: "Manolo, Kyle", id: "202301282", course: "BSCS", section: "2C", status: "Pending" }
   ];
-  
+
   const rowsPerPage = 6;
   let currentPage = 1;
-  
+
   function renderTablePage(page) {
     const tbody = document.querySelector(".student-table tbody");
     tbody.innerHTML = "";
-  
+
     const start = (page - 1) * rowsPerPage;
     const end = start + rowsPerPage;
     const pageStudents = students.slice(start, end);
-  
+
     for (const student of pageStudents) {
       tbody.innerHTML += `
         <tr>
@@ -37,13 +44,12 @@ const students = [
       `;
     }
   }
-  
+
   function renderPagination() {
     const pagination = document.getElementById("pagination");
     const pageCount = Math.ceil(students.length / rowsPerPage);
-  
     pagination.innerHTML = "";
-  
+
     for (let i = 1; i <= pageCount; i++) {
       const btn = document.createElement("button");
       btn.textContent = i;
@@ -57,99 +63,88 @@ const students = [
       pagination.appendChild(btn);
     }
   }
-  
+
   // Modal handlers
   function openModal() {
-    document.getElementById('viewModal').style.display = 'block';
+    document.getElementById("viewModal").style.display = "block";
   }
   function closeModal() {
-    document.getElementById('viewModal').style.display = 'none';
+    document.getElementById("viewModal").style.display = "none";
   }
-  window.onclick = function(event) {
-    const modal = document.getElementById('viewModal');
+  window.onclick = function (event) {
+    const modal = document.getElementById("viewModal");
     if (event.target === modal) closeModal();
   };
-  
-  window.onload = function() {
+
+  // Run table rendering on load
+  window.onload = function () {
     renderTablePage(currentPage);
     renderPagination();
   };
-  
-  function openModal() {
-    document.getElementById('viewModal').style.display = 'block';
+}
+
+// =====================
+// FEE MANAGEMENT
+// =====================
+if (currentPath.includes("admin-fees.html")) {
+  let feeList = JSON.parse(localStorage.getItem("feeList")) || [];
+
+  function saveFees() {
+    localStorage.setItem("feeList", JSON.stringify(feeList));
   }
-  function closeModal() {
-    document.getElementById('viewModal').style.display = 'none';
-  }
-  window.onclick = function(event) {
-    const modal = document.getElementById('viewModal');
-    if (event.target === modal) {
-      closeModal();
+
+  function renderFees() {
+    const tbody = document.querySelector("#feeTable tbody");
+    tbody.innerHTML = "";
+
+    if (feeList.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">No fees added yet.</td></tr>';
+      return;
     }
-  };
 
-// --------THIS IS FOR STUD FEE -----
-let feeList = JSON.parse(localStorage.getItem("feeList")) || [];
-
-function saveFees() {
-  localStorage.setItem("feeList", JSON.stringify(feeList));
-}
-
-// Render the fee table
-function renderFees() {
-  const tbody = document.querySelector("#feeTable tbody");
-  tbody.innerHTML = "";
-
-  if (feeList.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">No fees added yet.</td></tr>';
-    return;
+    feeList.forEach((fee, index) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${fee.name}</td>
+        <td>₱${fee.amount.toLocaleString()}</td>
+        <td>${fee.semester}</td>
+        <td>${fee.dueDate}</td>
+        <td>${fee.status}</td>
+        <td>
+          <button onclick="removeFee(${index})" class="remove-btn">Remove</button>
+        </td>
+      `;
+      tbody.appendChild(row);
+    });
   }
 
-  feeList.forEach((fee, index) => {
-    const row = document.createElement("tr");
-    row.innerHTML = `
-      <td>${fee.name}</td>
-      <td>₱${fee.amount.toLocaleString()}</td>
-      <td>${fee.semester}</td>
-      <td>${fee.dueDate}</td>
-      <td>${fee.status}</td>
-      <td>
-        <button onclick="removeFee(${index})" class="remove-btn">Remove</button>
-      </td>
-    `;
-    tbody.appendChild(row);
-  });
-}
+  function addFee(event) {
+    event.preventDefault();
+    const name = document.getElementById("feeName").value;
+    const amount = parseFloat(document.getElementById("amount").value);
+    const semester = document.getElementById("semester").value;
+    const dueDate = document.getElementById("dueDate").value;
 
-// Add fee from form
-function addFee(event) {
-  event.preventDefault();
+    feeList.push({
+      name,
+      amount,
+      semester,
+      dueDate,
+      status: "Active"
+    });
 
-  const name = document.getElementById("feeName").value;
-  const amount = parseFloat(document.getElementById("amount").value);
-  const semester = document.getElementById("semester").value;
-  const dueDate = document.getElementById("dueDate").value;
-
-  feeList.push({
-    name,
-    amount,
-    semester,
-    dueDate,
-    status: "Active"
-  });
-
-  saveFees();
-  renderFees();
-  document.getElementById("feeForm").reset();
-}
-
-// To emove fee
-function removeFee(index) {
-  if (confirm("Are you sure you want to delete this fee?")) {
-    feeList.splice(index, 1);
     saveFees();
     renderFees();
+    document.getElementById("feeForm").reset();
   }
-}
 
-window.onload = renderFees;
+  function removeFee(index) {
+    if (confirm("Are you sure you want to delete this fee?")) {
+      feeList.splice(index, 1);
+      saveFees();
+      renderFees();
+    }
+  }
+
+  window.onload = renderFees;
+}
