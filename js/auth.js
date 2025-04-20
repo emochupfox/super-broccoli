@@ -3,7 +3,7 @@ function login() {
   const password = document.getElementById("password").value.trim();
   const role = document.getElementById("userRole").value;
 
-  // Basic sample login (replace this with real validation if needed)
+  // our login without validation just sample 
   if (username && password) {
     if (role === "student") {
       window.location.href = "student-dashboard.html";

@@ -21,12 +21,11 @@ function renderDepartments() {
   });
 }
 
-// Logout redirect
+// Logout redirect also
 function logout() {
   window.location.href = "index.html";
 }
 
-// Toggle sidebar (optional)
 function toggleSidebar() {
   const sidebar = document.getElementById("sidebar");
   if (sidebar) {
@@ -34,7 +33,6 @@ function toggleSidebar() {
   }
 }
 
-// Scroll for fee cards
 function scrollNext() {
   const container = document.getElementById("feeCardContainer");
   if (container) {
@@ -42,7 +40,6 @@ function scrollNext() {
   }
 }
 
-// Scroll for merch cards
 function scrollMerch() {
   const container = document.getElementById("merchContainer");
   if (container) {
@@ -60,12 +57,11 @@ function filterFees(status) {
 }
 
 
-// Initialize only what's needed
 window.onload = () => {
-  renderDepartments(); // For department list only if used
+  renderDepartments(); 
 };
 
-const username = "Missy"; // This can later come from login session or user data
+const username = "Missy";
 const welcomeText = document.getElementById("welcomeText");
 if (welcomeText) {
   welcomeText.textContent = `Welcome, ${username}!`;

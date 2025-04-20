@@ -89,10 +89,8 @@ const students = [
   };
 
 // --------THIS IS FOR STUD FEE -----
-// Load existing fees from localStorage or initialize as empty
 let feeList = JSON.parse(localStorage.getItem("feeList")) || [];
 
-// Save to localStorage
 function saveFees() {
   localStorage.setItem("feeList", JSON.stringify(feeList));
 }
@@ -145,7 +143,7 @@ function addFee(event) {
   document.getElementById("feeForm").reset();
 }
 
-// Remove fee
+// To emove fee
 function removeFee(index) {
   if (confirm("Are you sure you want to delete this fee?")) {
     feeList.splice(index, 1);
@@ -154,5 +152,4 @@ function removeFee(index) {
   }
 }
 
-// Initial load
 window.onload = renderFees;
