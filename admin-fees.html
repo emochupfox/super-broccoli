@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin - Manage Fees</title>
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand">PAYFEES ADMIN</div>
+    <nav class="nav-links">
+      <a href="admin-dashboard.html">Dashboard</a>
+      <a href="admin-students.html">Students</a>
+      <a href="admin-fees.html" class="active">Fees</a>
+      <a href="#" onclick="logout()">Logout</a>
+    </nav>
+  </header>
+
+  <main class="admin-container">
+    <h2>Manage Fees</h2>
+
+    <!-- Add Fee Form -->
+    <section class="form-section">
+      <h3>Add New Fee</h3>
+      <form id="feeForm" onsubmit="addFee(event)">
+        <label for="feeName">Fee Name:</label>
+        <input type="text" id="feeName" required />
+
+        <label for="amount">Amount (₱):</label>
+        <input type="number" id="amount" required />
+
+        <label for="semester">Semester:</label>
+        <input type="text" id="semester" placeholder="e.g. 2nd Sem 2024–2025" required />
+
+        <label for="dueDate">Due Date:</label>
+        <input type="date" id="dueDate" required />
+
+        <button type="submit" class="primary-btn">+ Add Fee</button>
+      </form>
+    </section>
+
+    <!-- Fee List Table -->
+    <section class="table-wrapper">
+      <h3>Existing Fees</h3>
+      <table class="student-table" id="feeTable">
+        <thead>
+          <tr>
+            <th>Fee Name</th>
+            <th>Amount</th>
+            <th>Semester</th>
+            <th>Due Date</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Fees will be added via JavaScript -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>
