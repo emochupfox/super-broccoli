@@ -38,3 +38,12 @@
   .login-container button:hover {
     background-color: #00e67a;
   }
+
+  #feedback{
+    h4{
+      background-color: rgb(253, 87, 87);
+      border-radius: 12px;
+      
+      padding: 10px 2rem;
+    }
+  }

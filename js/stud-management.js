@@ -1,5 +1,5 @@
 const students = [
-    { name: "Balano, Missy E. M", id: "8888-99999", course: "BSCS", section: "2C", status: "Pending" },
+    { name: "Balano, Missy E. M", id: "888899999", course: "BSCS", section: "2C", status: "Pending" },
     { name: "Anastacio, Mattjhevic", id: "202301234", course: "BSCS", section: "2C", status: "Pending" },
     { name: "Salilig, Gian", id: "202301245", course: "BSCS", section: "2C", status: "Pending" },
     { name: "Flore, JM", id: "202301256", course: "BSCS", section: "2C", status: "Pending" },
@@ -29,7 +29,7 @@ const students = [
           <td>${student.section}</td>
           <td>${student.status}</td>
           <td>
-            <button class="view-btn" onclick="openModal()">View</button>
+            <button class="view-btn" onclick="openModal(${student.id})">View</button>=
             <button class="edit-btn">Edit</button>
             <button class="remove-btn">Remove</button>
           </td>
@@ -58,9 +58,26 @@ const students = [
     }
   }
   
-  function openModal() {
+  function openModal(student_ID) {
     document.getElementById('viewModal').style.display = 'block';
+    let viewModal = document.querySelector(".modal-content");
+    console.log("jdaslkladj")
+
+    students.forEach(student => {
+      if (student.id == student_ID){
+        viewModal.innerHTML = `
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+          <h3>Student Information</h3>
+          <p id="studentName"><strong>Name: </strong>${student.name}</p>
+          <p id="studentID"><strong>Student ID: </strong>${student.id}</p>
+          <p id="studentDepartment"><strong>Course: </strong>${student.course}</p>
+          <p id="studentYearAndSection"><strong>Section: </strong>${student.section}</p>
+          <p id="studentStatus"><strong>Status: </strong>${student.status}</p>
+        `
+      }
+    })
   }
+
   function closeModal() {
     document.getElementById('viewModal').style.display = 'none';
   }
