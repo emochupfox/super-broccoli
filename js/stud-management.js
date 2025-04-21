@@ -61,7 +61,6 @@ const students = [
   function openModal(student_ID) {
     document.getElementById('viewModal').style.display = 'block';
     let viewModal = document.querySelector(".modal-content");
-    console.log("jdaslkladj")
 
     students.forEach(student => {
       if (student.id == student_ID){
