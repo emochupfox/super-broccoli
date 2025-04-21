@@ -330,3 +330,62 @@ h2 {
     font-size: 14px;
   }
 }
+/*FOR PAYMENT REQ*/
+.pagination {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  background-color: #004d00;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  margin: 0 3px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: #009900;
+}
+
+.approve-btn {
+  background-color: #004e12;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin-right: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.decline-btn {
+  background-color: #76000c;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.status-label {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 13px;
+}
+
+.status-label.pending {
+  background-color: #edb200;
+  color: black;
+}
+
+.status-label.approved {
+  background-color: #003f0f;
+  color: white;
+}
+
+.status-label.declined {
+  background-color: #76000c;
+  color: white;
+}

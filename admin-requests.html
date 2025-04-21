@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payment Requests</title>
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand">PAYFEES ADMIN</div>
+    <nav class="nav-links">
+      <a href="admin-dashboard.html">Dashboard</a>
+      <a href="admin-students.html">Students</a>
+      <a href="admin-fees.html">Fees</a>
+      <a href="admin-requests.html" class="active">Requests</a>
+      <a href="#">Logout</a>
+    </nav>
+  </header>
+
+  <main class="admin-container">
+    <h2>Payment Requests</h2>
+    <table class="student-table" id="requestTable">
+      <thead>
+        <tr>
+          <th>Student Name</th>
+          <th>Fee Name</th>
+          <th>Amount</th>
+          <th>Date Requested</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- DATA HERE IS ON JS -->
+      </tbody>
+    </table>
+
+    <div id="pagination" class="pagination"></div>
+  </main>
+
+  <script src="js/requests.js"></script>
+</body>
+</html>
