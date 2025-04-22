@@ -12,7 +12,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 20px 30px;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -22,13 +22,10 @@ body {
   font-size: 1.6rem;
   font-weight: bold;
   color: white;
-  flex-shrink: 0;
 }
 
 .nav-links {
   display: flex;
-  justify-content: flex-end;
-  flex-grow: 1;
   align-items: center;
   gap: 20px;
 }

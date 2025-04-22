@@ -15,16 +15,16 @@
       <a href="student-dashboard.html" class="active">HOME</a>
       <a href="receipts.html">RECEIPTS</a>
       <a href="checkout.html">🛒Cart</a>
-    <div class="dropdown">
-      <button class="dropbtn" onclick="toggleDropdown()">👤 My Account ▾</button>
-      <div class="dropdown-content">
-        <a href="profile.html">Profile</a>
-        <a href="#" onclick="logout()">Logout</a>
+      <div class="dropdown">
+        <button class="dropbtn" onclick="toggleDropdown()">👤 My Account ▾</button>
+        <div class="dropdown-content">
+          <a href="#">Profile</a>
+          <a href="#" onclick="logout()">Logout</a>
+        </div>
       </div>
-    </div>
     </nav>
     
-    <div class="menu-icon" style="cursor:pointer;">
+    <div class="menu-icon" onclick="toggleNav()">
       <span></span>
       <span></span>
       <span></span>
@@ -32,218 +32,213 @@
     
     
   </header>
-
-  <aside class="sidebar" id="sidebar">
-    <button class="close-sidebar" id="closeSidebar">&times;</button>
-    <nav class="sidebar-nav">
-      <a href="student-dashboard.html" class="active">HOME</a>
-      <a href="receipts.html">RECEIPTS</a>
-      <a href="checkout.html">🛒Cart</a>
-      <div class="dropdown">
-        <button class="dropbtn" onclick="toggleDropdown()">👤 My Account ▾</button>
-        <div class="dropdown-content">
-          <a href="profile.html">Profile</a>
-          <a href="#" onclick="logout()">Logout</a>
-        </div>
-      </div>
-    </nav>
-  </aside>
   
-  <div class="welcome-banner" id="welcomeBanner" style="padding: 10px 20px; font-size: 1.2rem; color: #e0ffe0;">
+  <div class="welcome-banner">
     <h2 id="welcomeText"></h2>
   </div>
   
+
   <main class="dashboard-content">
-    <div class="scrolling-section" id="feesSection">
-      <h2 class="section-title" id="fees">CURRENT FEES TO PAY THIS SEM <a href="all-fees.html" class="view-all-btn">View All →</a></h2>
-      <div class="scroll-container-wrapper">
-        <div class="filter-buttons">
-          <button onclick="filterFees('all')">All</button>
-          <button onclick="filterFees('pending')">Pending</button>
-          <button onclick="filterFees('paid')">Paid</button>
-        </div>
-        <button class="scroll-btn" onclick="scrollNext()">Next →</button>
-        <div class="scroll-container" id="feeCardContainer">
-          <div class="fee-card" data-status="pending">
-            <img src="assets/images/462752151_996094395865034_296934338214660081_n.jpg" alt="Venom">
-            <div class="card-details">
-              <p>VENOM</p>
-              <p>₱100</p>
-              <p class="status-label status-pending">Pending</p>
-            </div>
-          </div>
-          
-          <div class="fee-card" data-status="pending">
-            <img src="assets/images/462557624_1319345839200938_7914858406326357209_n.jpg" alt="CCS-CSC">
-            <div class="card-details">
-              <p>CSS-CSC</p>
-              <p>₱200</p>
-              <p class="status-label status-pending">Pending</p>
-            </div>
-          </div>
-          
-          <div class="fee-card" data-status="pending">
-            <img src="assets/images/369314453_6433344190034744_3370999456318746765_n.jpg" alt="British Insurance">
-            <div class="card-details">
-              <p>BRITISH INSURANCE</p>
-              <p>₱70</p>
-              <p class="status-label status-pending">Pending</p>
-            </div>
-          </div>
-  
-          <div class="fee-card" data-status="pending">
-            <img src="assets/images/456294528_916614927174543_4614363158398336641_n.jpg" alt="Gender Club">
-            <div class="card-details">
-              <p>GENDER CLUB</p>
-              <p>₱150</p>
-              <p class="status-label status-pending">Pending</p>
-            </div>
-          </div>
-  
-          <div class="fee-card" data-status="pending">
-            <img src="assets/images/476831502_1016323520527681_2759382191034826517_n.jpg" alt="PhiCCS">
-            <div class="card-details">
-              <p>PHICSS</p>
-              <p>₱100</p>
-              <p class="status-label status-pending">Pending</p>
-            </div>
-          </div>
-  
-          <div class="fee-card" data-status="pending">
-            <img src="assets/images/308522109_435137252050094_3043565757327978958_n.png" alt="MSA">
-            <div class="card-details">
-              <p>Muslim Student Association(MSA)</p>
-              <p>₱50</p>
-              <p class="status-label status-pending">Pending</p>
-            </div>
-          </div>
-  
-          <div class="fee-card" data-status="pending">
-            <img src="assets/images/462557624_1319345839200938_7914858406326357209_n.jpg" alt="Tuition Fee">
-            <div class="card-details">
-              <p>ATHLETE FEE</p>
-              <p>₱150</p>
-              <p class="status-label status-pending">Pending</p>
-            </div>
-          </div>
-  
-          <div class="fee-card" data-status="pending">
-            <img src="assets/images/307697789_476190597858372_4111522872270449527_n.jpg" alt="Tuition Fee">
-            <div class="card-details">
-              <p>University Digest</p>
-              <p>₱150</p>
-              <p class="status-label status-pending">Pending</p>
-            </div>
+    <h2 class="section-title" id="fees">CURRENT FEES TO PAY THIS SEM</h2>
+
+    <div style="text-align: right; margin-top: -25px; margin-bottom: 10px;">
+      <a href="all-fees.html" class="view-all-btn">View All →</a>
+    </div>
+    
+
+    <div class="scroll-container-wrapper">
+      <div class="filter-buttons">
+        <button onclick="filterFees('all')">All</button>
+        <button onclick="filterFees('pending')">Pending</button>
+        <button onclick="filterFees('paid')">Paid</button>
+      </div>
+      
+      <button class="scroll-btn" onclick="scrollNext()">Next →</button>
+      <div class="scroll-container" id="feeCardContainer">
+    
+        <div class="fee-card" data-status="pending">
+          <img src="assets/images/462752151_996094395865034_296934338214660081_n.jpg" alt="Venom">
+          <div class="card-details">
+            <p>VENOM</p>
+            <p>₱100</p>
+            <p class="status-label status-pending">Pending</p>
           </div>
         </div>
+        
+        <div class="fee-card" data-status="paid">
+          <img src="assets/images/462557624_1319345839200938_7914858406326357209_n.jpg" alt="CCS-CSC">
+          <div class="card-details">
+            <p>CSS-CSC</p>
+            <p>₱200</p>
+            <p class="status-label status-paid">Paid</p>
+          </div>
+        </div>
+        
+        <div class="fee-card" data-status="pending">
+          <img src="assets/images/369314453_6433344190034744_3370999456318746765_n.jpg" alt="British Insurance">
+          <div class="card-details">
+            <p>BRITISH INSURANCE</p>
+            <p>₱70</p>
+            <p class="status-label status-pending">Pending</p>
+          </div>
+        </div>
+
+        <div class="fee-card" data-status="paid">
+          <img src="assets/images/456294528_916614927174543_4614363158398336641_n.jpg" alt="Gender Club">
+          <div class="card-details">
+            <p>GENDER CLUB</p>
+            <p>₱150</p>
+            <p class="status-label status-paid">Paid</p>
+          </div>
+        </div>
+
+        <div class="fee-card" data-status="pending">
+          <img src="assets/images/476831502_1016323520527681_2759382191034826517_n.jpg" alt="PhiCCS">
+          <div class="card-details">
+            <p>PHICSS</p>
+            <p>₱100</p>
+            <p class="status-label status-pending">Pending</p>
+          </div>
+        </div>
+
+        <div class="fee-card" data-status="paid">
+          <img src="assets/images/308522109_435137252050094_3043565757327978958_n.png" alt="MSA">
+          <div class="card-details">
+            <p>Muslim Student Association(MSA)</p>
+            <p>₱50</p>
+            <p class="status-label status-paid">Paid</p>
+          </div>
+        </div>
+
+        <div class="fee-card" data-status="pending">
+          <img src="assets/images/462557624_1319345839200938_7914858406326357209_n.jpg" alt="Tuition Fee">
+          <div class="card-details">
+            <p>ATHLETE FEE</p>
+            <p>₱150</p>
+            <p class="status-label status-pending">Pending</p>
+          </div>
+        </div>
+
+        <div class="fee-card" data-status="paid">
+          <img src="assets/images/307697789_476190597858372_4111522872270449527_n.jpg" alt="Tuition Fee">
+          <div class="card-details">
+            <p>University Digest</p>
+            <p>₱150</p>
+            <p class="status-label status-paid">Paid</p>
+          </div>
+        </div>
+
       </div>
     </div>
-  
-    <div class="scrolling-section" id="merchSection">
-      <h2 class="section-title" id="merch">AVAILABLE MERCH <a href="all-merch.html" class="view-all-btn">View All →</a></h2>
-      <div class="scroll-container-wrapper">
-        <button class="scroll-btn" onclick="scrollMerch()">Next →</button>
-        <div class="scroll-container" id="merchContainer">
-          <div class="merch-card">
-            <div class="merch-badge">NEW</div>
-            <img src="assets/images/490860138_1248062160663049_463282577593949573_n.jpg" alt="University Hoodie">
-            <div class="merch-details">
-              <h4>New Blazer-Lanyard</h4>
-              <p>Comfortable and stylish</p>
-              <strong class="price">₱129</strong>
-              <button class="pay-btn" onclick="openModal('New Blazer-Lanyard', '₱129')">Buy Now</button>
-              <button onclick="addToCart('New Blazer-Lanyard', 129)">Add to Cart</button>
-            </div>
-          </div>
-      
-          <div class="merch-card">
-            <div class="merch-badge">NEW</div>
-            <img src="assets/images/490796457_1248065337329398_7972702380461820202_n.jpg" alt="University Hoodie">
-            <div class="merch-details">
-              <h4>Crimson Tees-White</h4>
-              <p>Comfortable and stylish</p>
-              <strong class="price">₱380</strong>
-              <button class="pay-btn" onclick="openModal('Crimson Tees-White', '₱380')">Buy Now</button>
-              <button onclick="addToCart('Crimson Tees-White', 380)">Add to Cart</button>
-            </div>
-          </div>
-      
-          <div class="merch-card">
-            <div class="merch-badge badge-limited">LIMITED</div>
-            <img src="assets/images/492072841_1248072610662004_4559505064002138350_n.jpg" alt="Limited Tees">
-            <div class="merch-details">
-              <h4>Crimson Tees-Black</h4>
-              <p>aethetic, cozy, and limited!</p>
-              <strong class="price">₱380</strong>
-              <button class="pay-btn" onclick="openModal('Crimson Tees', '₱380')">Buy Now</button>
-              <button onclick="addToCart('Crimson Tees', 380)">Add to Cart</button>
-            </div>
-          </div>
-      
-          <div class="merch-card">
-            <div class="merch-badge badge-limited">LIMITED</div>
-            <img src="assets/images/491408812_1248063133996285_9168787334770787980_n.jpg" alt="Limited Hoodie">
-            <div class="merch-details">
-              <h4>Gale Breaker-Red & white</h4>
-              <p>stylish, cozy and limited!</p>
-              <strong class="price">₱1,250</strong>
-              <button class="pay-btn" onclick="openModal('Gale Breaker', '₱1,250')">Buy Now</button>
-              <button onclick="addToCart('Gale Breaker', 1250)">Add to Cart</button>
-            </div>
-          </div>
-          <div class="merch-card">
-            <div class="merch-badge badge-limited">LIMITED</div>
-            <img src="assets/images/492082170_1248063207329611_3262609591947020968_n.jpg" alt="Limited Hoodie">
-            <div class="merch-details">
-              <h4>Gale Breaker-black & White</h4>
-              <p>stylish, cozy and limited!</p>
-              <strong class="price">₱1,250</strong>
-              <button class="pay-btn" onclick="openModal('Gale Breaker', '₱1,250')">Buy Now</button>
-              <button onclick="addToCart('Gale Breaker', 1250)">Add to Cart</button>
-            </div>
-          </div>
-         
-      
-          <div class="merch-card">
-            <div class="merch-badge badge-limited">LIMITED</div>
-            <img src="assets/images/489058310_1156505506486957_5200341004293562485_n.jpg" alt="Another Hoodie">
-            <div class="merch-details">
-              <h4>CCS-JERSEY</h4>
-              <p>name customazation, cozy and limited!</p>
-              <strong class="'price">₱350</strong>
-              <button class="pay-btn" onclick="openModal('CCS-Jersey customize', '₱350', true)">Buy Now</button>
-              <button onclick="addToCart('CCS-Jersey customize', 350)">Add to Cart</button>
-            </div>
-          </div>
-      
-      
-          <div class="merch-card">
-            <div class="merch-badge">NEW</div>
-            <img src="assets/images/71XCTGRR7UL._AC_UF894,1000_QL80_.jpg" alt="Campus Tumbler">
-            <div class="merch-details">
-              <h4>CSS Lanyard</h4>
-              <p>comfortable and cozy</p>
-              <strong class="price">₱150</strong>
-              <button class="pay-btn" onclick="openModal('CSS Lanyard', '₱150')">Buy Now</button>
-              <button onclick="addToCart('CSS Lanyard', 150)">Add to Cart</button>
-            </div>
-          </div>
-      
-          <!-- Example merch card -->
-      <div class="merch-card">
-        <img src="assets/images/travel-tumbler-2_2.jpeg" alt="Campus Tumbler" />
-        <h4>Campus Tumbler</h4>
-        <p>500ml stainless steel bottle</p>
-        <strong>₱300</strong>
-<button class="pay-btn" onclick="openModal('Campus Tumbler', '₱300', true)">Buy Now</button>
-        <button class="add-btn" onclick="addToCart('Campus Tumbler', 300)">Add to Cart</button>
-      </div>
-      
-      
-        </div>
+    
+
+
+    <h2 class="section-title" id="merch">AVAILABLE MERCH</h2>
+
+    <div style="text-align: right; margin-top: -25px; margin-bottom: 10px;">
+      <a href="all-merch.html" class="view-all-btn">View All →</a>
+    </div>
+    
+
+<div class="scroll-container-wrapper">
+  <button class="scroll-btn" onclick="scrollMerch()">Next →</button>
+  <div class="scroll-container" id="merchContainer">
+
+    <div class="merch-card">
+      <div class="merch-badge">NEW</div>
+      <img src="assets/images/490860138_1248062160663049_463282577593949573_n.jpg" alt="University Hoodie">
+      <div class="merch-details">
+        <h4>New Blazer-Lanyard</h4>
+        <p>Comfortable and stylish</p>
+        <strong class="price">₱129</strong>
+        <button class="pay-btn" onclick="openModal('New Blazer-Lanyard', '₱129')">Buy Now</button>
+        <button onclick="addToCart('New Blazer-Lanyard', 129)">Add to Cart</button>
       </div>
     </div>
-  </main>
+
+    <div class="merch-card">
+      <div class="merch-badge">NEW</div>
+      <img src="assets/images/490796457_1248065337329398_7972702380461820202_n.jpg" alt="University Hoodie">
+      <div class="merch-details">
+        <h4>Crimson Tees-White</h4>
+        <p>Comfortable and stylish</p>
+        <strong class="price">₱380</strong>
+        <button class="pay-btn" onclick="openModal('Crimson Tees-White', '₱380')">Buy Now</button>
+        <button onclick="addToCart('Crimson Tees-White', 380)">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="merch-card">
+      <div class="merch-badge badge-limited">LIMITED</div>
+      <img src="assets/images/492072841_1248072610662004_4559505064002138350_n.jpg" alt="Limited Tees">
+      <div class="merch-details">
+        <h4>Crimson Tees-Black</h4>
+        <p>aethetic, cozy, and limited!</p>
+        <strong class="price">₱380</strong>
+        <button class="pay-btn" onclick="openModal('Crimson Tees', '₱380')">Buy Now</button>
+        <button onclick="addToCart('Crimson Tees', 380)">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="merch-card">
+      <div class="merch-badge badge-limited">LIMITED</div>
+      <img src="assets/images/491408812_1248063133996285_9168787334770787980_n.jpg" alt="Limited Hoodie">
+      <div class="merch-details">
+        <h4>Gale Breaker-Red & white</h4>
+        <p>stylish, cozy and limited!</p>
+        <strong class="price">₱1,250</strong>
+        <button class="pay-btn" onclick="openModal('Gale Breaker', '₱1,250')">Buy Now</button>
+        <button onclick="addToCart('Gale Breaker', 1250)">Add to Cart</button>
+      </div>
+    </div>
+    <div class="merch-card">
+      <div class="merch-badge badge-limited">LIMITED</div>
+      <img src="assets/images/492082170_1248063207329611_3262609591947020968_n.jpg" alt="Limited Hoodie">
+      <div class="merch-details">
+        <h4>Gale Breaker-black & White</h4>
+        <p>stylish, cozy and limited!</p>
+        <strong class="price">₱1,250</strong>
+        <button class="pay-btn" onclick="openModal('Gale Breaker', '₱1,250')">Buy Now</button>
+        <button onclick="addToCart('Gale Breaker', 1250)">Add to Cart</button>
+      </div>
+    </div>
+   
+
+    <div class="merch-card">
+      <div class="merch-badge badge-limited">LIMITED</div>
+      <img src="assets/images/489058310_1156505506486957_5200341004293562485_n.jpg" alt="Another Hoodie">
+      <div class="merch-details">
+        <h4>CCS-JERSEY</h4>
+        <p>name customazation, cozy and limited!</p>
+        <strong class="'price">₱350</strong>
+        <button class="pay-btn" onclick="openModal('CCS-Jersey customize', '₱350', true)">Buy Now</button>
+        <button onclick="addToCart('CCS-Jersey customize', 350)">Add to Cart</button>
+      </div>
+    </div>
+
+
+    <div class="merch-card">
+      <div class="merch-badge">NEW</div>
+      <img src="assets/images/71XCTGRR7UL._AC_UF894,1000_QL80_.jpg" alt="Campus Tumbler">
+      <div class="merch-details">
+        <h4>CSS Lanyard</h4>
+        <p>comfortable and cozy</p>
+        <strong class="price">₱150</strong>
+        <button class="pay-btn" onclick="openModal('CSS Lanyard', '₱150')">Buy Now</button>
+        <button onclick="addToCart('CSS Lanyard', 150)">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Example merch card -->
+<div class="merch-card">
+  <img src="assets/images/travel-tumbler-2_2.jpeg" alt="Campus Tumbler" />
+  <h4>Campus Tumbler</h4>
+  <p>500ml stainless steel bottle</p>
+  <strong>₱300</strong>
+  <button class="buy-btn" onclick="openModal('Campus Tumbler', '₱300', true)">Buy Now</button>
+  <button class="add-btn" onclick="addToCart('Campus Tumbler', 300)">Add to Cart</button>
+</div>
+
 
   </div>
 </div>
