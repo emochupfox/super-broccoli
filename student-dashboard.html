@@ -24,7 +24,7 @@
     </div>
     </nav>
     
-    <div class="menu-icon" onclick="toggleNav()" style="cursor:pointer;">
+    <div class="menu-icon" style="cursor:pointer;">
       <span></span>
       <span></span>
       <span></span>
@@ -32,6 +32,22 @@
     
     
   </header>
+
+  <aside class="sidebar" id="sidebar">
+    <button class="close-sidebar" id="closeSidebar">&times;</button>
+    <nav class="sidebar-nav">
+      <a href="student-dashboard.html" class="active">HOME</a>
+      <a href="receipts.html">RECEIPTS</a>
+      <a href="checkout.html">🛒Cart</a>
+      <div class="dropdown">
+        <button class="dropbtn" onclick="toggleDropdown()">👤 My Account ▾</button>
+        <div class="dropdown-content">
+          <a href="profile.html">Profile</a>
+          <a href="#" onclick="logout()">Logout</a>
+        </div>
+      </div>
+    </nav>
+  </aside>
   
   <div class="welcome-banner" id="welcomeBanner" style="padding: 10px 20px; font-size: 1.2rem; color: #e0ffe0;">
     <h2 id="welcomeText"></h2>
