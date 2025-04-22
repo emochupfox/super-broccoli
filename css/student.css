@@ -732,4 +732,10 @@ h3 {
 .scroll-container .merch-card {
   display: inline-block; 
   margin-right: 20px;
+  transition: transform 0.3s ease;
+}
+
+.scroll-container .fee-card:hover,
+.scroll-container .merch-card:hover {
+  transform: scale(1.05);
 }

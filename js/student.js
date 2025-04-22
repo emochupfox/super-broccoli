@@ -244,6 +244,8 @@ function submitPayment(event) {
 }
 
 // Animation pause/resume logic for fees section
+// Removed to keep animation continuously running without pause on interaction
+/*
 const feeContainer = document.getElementById("feeCardContainer");
 const feesSection = document.getElementById("feesSection");
 
@@ -268,6 +270,7 @@ if (feesSection) {
   feesSection.addEventListener("click", pauseAnimation);
   feesSection.addEventListener("touchstart", pauseAnimation);
 }
+*/
 
 // Close payment modal
 function closeModal() {
