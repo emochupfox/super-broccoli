@@ -1,16 +1,23 @@
-function login() {
-  const username = document.getElementById("username").value.trim();
-  const password = document.getElementById("password").value.trim();
-  const role = document.getElementById("userRole").value;
+$(document).ready(function () {
+  $('#loginBtn').on('click', function () {
+    const username = $('#username').val().trim();
+    const password = $('#password').val().trim();
+    const role = $('#userRole').val();
 
-  // our login without validation just sample 
-  if (username && password) {
+    if (!username || !password) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+    if (!username.toLowerCase().endsWith("@wmsu.ph")) {
+      alert("Only @wmsu.ph email addresses are allowed.");
+      return;
+    }
+
     if (role === "student") {
       window.location.href = "student-dashboard.html";
     } else if (role === "admin") {
       window.location.href = "admin-dashboard.html";
     }
-  } else {
-    alert("Please fill in all fields.");
-  }
-}
+  });
+});

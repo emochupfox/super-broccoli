@@ -13,11 +13,11 @@
   
     <nav class="nav-links" id="navLinks">
       <a href="student-dashboard.html" class="active">HOME</a>
-  <a href="receipts.html">RECEIPTS</a>
-  <a href="#">FEEDBACK</a>
-  <a href="checkout.html">🛒Cart</a>
+      <a href="receipts.html">RECEIPTS</a>
+      <a href="#">FEEDBACK</a>
+      <a href="checkout.html">🛒Cart</a>
       <div class="dropdown">
-        <button class="dropbtn">👤 My Account ▾</button>
+        <button class="dropbtn" onclick="toggleDropdown()">👤 My Account ▾</button>
         <div class="dropdown-content">
           <a href="#">Profile</a>
           <a href="#" onclick="logout()">Logout</a>
@@ -25,12 +25,12 @@
       </div>
     </nav>
     
-  
     <div class="menu-icon" onclick="toggleNav()">
       <span></span>
       <span></span>
       <span></span>
     </div>
+    
     
   </header>
   
@@ -243,7 +243,6 @@
 
   </div>
 </div>
-
 <div class="payment-modal" id="paymentModal">
   <div class="payment-content">
     <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -261,13 +260,38 @@
 </div>
 
 <script>
-  // Cart array to hold selected merch
+  function openModal(name, amount) {
+    document.getElementById("feeName").value = name;
+    document.getElementById("amount").value = amount;
+    document.getElementById("paymentModal").style.display = "flex";
+  }
+
+  function closeModal() {
+    document.getElementById("paymentModal").style.display = "none";
+  }
+
+  function submitPayment(event) {
+    event.preventDefault();
+    alert("✅ Payment submitted successfully!");
+    closeModal();
+  }
+
+  // Optional: Close the modal if user clicks outside the modal box
+  window.onclick = function (event) {
+    const modal = document.getElementById("paymentModal");
+    if (event.target === modal) {
+      closeModal();
+    }
+  };
+  // FOR ADD TO CART IN MERCH
   function addToCart(itemName, price) {
     let cart = JSON.parse(localStorage.getItem("merchCart")) || [];
     cart.push({ name: itemName, price: price });
     localStorage.setItem("merchCart", JSON.stringify(cart));
     alert(`${itemName} has been added to your cart!`);
   }
+
+  
 </script>
 
   </main>

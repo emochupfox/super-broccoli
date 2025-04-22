@@ -6,6 +6,30 @@
   <title>Admin Dashboard</title>
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/admin.css" />
+  <style>
+    .admin-shortcuts {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+
+    .shortcut-btn {
+      background-color: #004d00;
+      color: white;
+      padding: 14px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: background-color 0.2s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .shortcut-btn:hover {
+      background-color: #009944;
+    }
+  </style>
 </head>
 <body>
   <header class="navbar">
@@ -30,6 +54,16 @@
     <section class="admin-card">
       <h2>Manage Fees</h2>
       <button class="primary-btn" onclick="openAddFee()">+ Add New Fee</button>
+    </section>
+
+    <!-- ADMIN SHORTCUT HERE -->
+    <section class="admin-card">
+      <h2>Quick Access</h2>
+      <div class="admin-shortcuts">
+        <a href="admin-students.html" class="shortcut-btn">👨‍🎓 Manage Students</a>
+        <a href="admin-fees.html" class="shortcut-btn">💰 Manage Fees</a>
+        <a href="admin-requests.html" class="shortcut-btn">📬 View Requests</a>
+      </div>
     </section>
   </main>
 

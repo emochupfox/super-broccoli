@@ -14,7 +14,7 @@
       <a href="admin-students.html" class="active">Students</a>
       <a href="admin-fees.html">Fees</a>
       <a href="admin-requests.html">PAYMENT REQUESTS</a>
-      <a href="#">Logout</a>
+      <a href="#" onclick="logout()">Logout</a>
     </nav>
   </header>
 
@@ -34,21 +34,23 @@
           </tr>
         </thead>
         <tbody id="studentTableBody">
+          <!-- Filled by JS -->
         </tbody>
       </table>
     </div>
     <div id="pagination" class="pagination"></div>
   </main>
 
+  <!-- View Modal -->
   <div id="viewModal" class="modal">
     <div class="modal-content">
       <span class="close-btn" onclick="closeModal()">&times;</span>
       <h3>Student Information</h3>
-      <p><strong>Name:</strong> Balano, Missy E. M</p>
-      <p><strong>Student ID:</strong> 8888-99999</p>
-      <p><strong>Course:</strong> BSCS</p>
-      <p><strong>Year/Section:</strong> 2C</p>
-      <p><strong>Status:</strong> Pending</p>
+      <p><strong>Name:</strong> <span id="modalName"></span></p>
+      <p><strong>Student ID:</strong> <span id="modalID"></span></p>
+      <p><strong>Course:</strong> <span id="modalCourse"></span></p>
+      <p><strong>Year/Section:</strong> <span id="modalSection"></span></p>
+      <p><strong>Status:</strong> <span id="modalStatus"></span></p>
     </div>
   </div>
 

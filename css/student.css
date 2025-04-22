@@ -65,6 +65,11 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
+.dropdown-content.show {
+  display: block;
+}
+
+
 .dropdown-content a {
   color: white;
   padding: 10px 15px;
@@ -76,9 +81,11 @@ body {
   background-color: #065f0e;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content,
+.dropdown-content:hover {
   display: block;
 }
+
 
 .menu-icon {
   display: none;

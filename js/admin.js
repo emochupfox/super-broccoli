@@ -2,7 +2,7 @@
 const currentPath = window.location.pathname;
 
 // =====================
-// FEE MANAGEMENT
+//  HERE IS FEE MANAGEMENT
 // =====================
 if (currentPath.includes("admin-fees.html")) {
   let feeList = JSON.parse(localStorage.getItem("feeList")) || [];
@@ -65,4 +65,12 @@ if (currentPath.includes("admin-fees.html")) {
   }
 
   window.onload = renderFees;
+}
+
+// =====================
+// WE LOGOUT FUNCTION HERE
+// =====================
+function logout() {
+  localStorage.clear(); 
+  window.location.href = "index.html";
 }
