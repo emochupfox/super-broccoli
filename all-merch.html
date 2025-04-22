@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>All Fees</title>
+  <title>All Merch</title>
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/student.css" />
   <style>
     body {
       background-color: #f1f5f9;
       font-family: Arial, sans-serif;
-      color: #1a1a1a;
+      
     }
 
     .page-header {
@@ -48,22 +48,34 @@
     .fee-box table {
       width: 100%;
       border-collapse: collapse;
+     
     }
 
     .fee-box thead {
-      background-color: #1e1e1e;
+      background-color: #004d00;
+    }
+
+    .fee-box th{
+      padding: 12px 16px;
+      text-align: left;
       color: white;
     }
 
-    .fee-box th,
     .fee-box td {
       padding: 12px 16px;
       text-align: left;
-      color: #1a1a1a;
+      color: black;
+    }
+
+    .fee-box img{
+      width: 80px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
     }
 
     .fee-box tbody tr:nth-child(even) {
-      background-color: #f4f4f4;
+      background-color: #888484;
     }
 
     .pay-btn {
@@ -164,7 +176,8 @@
       <table>
         <thead>
           <tr>
-            <th>Fee Name</th>
+            <th>Product image</th>
+            <th>Product Name</th>
             <th>Price</th>
             <th>Description</th>
             <th>Action</th>
@@ -172,52 +185,60 @@
         </thead>
         <tbody>
           <tr>
-            <td>Venom</td>
-            <td>₱100</td>
-            <td>Necessary enrollment fee.</td>
-            <td><button class="pay-btn" onclick="openModal('Venom', '₱100')">Pay Now</button></td>
+            <td><img src="assets/images/490860138_1248062160663049_463282577593949573_n.jpg" alt="New Blazer-Lanyard"></td>
+            <td>New Blazer-Lanyard</td>
+            <td>₱129</td>
+            <td>Comfortable and stylish.</td>
+            <td><button class="pay-btn" onclick="openModal('New Blazer-Lanyard', '₱129')">Pay Now</button></td>
           </tr>
           <tr>
-            <td>CSS-CSC</td>
-            <td>₱200</td>
-            <td>Necessary enrollment Fee.</td>
-            <td><button class="pay-btn" onclick="openModal('CCS-CSC', '₱200')">Pay Now</button></td>
+            <td><img src="assets/images/490796457_1248065337329398_7972702380461820202_n.jpg" alt="Crimson Tees-White"></td>
+            <td>Crimson Tees-White</td>
+            <td>₱380</td>
+            <td>Comfortable and stylish</td>
+            <td><button class="pay-btn" onclick="openModal('Crimson Tees-White', '₱380')">Pay Now</button></td>
           </tr>
           <tr>
-            <td>British Insurance</td>
-            <td>₱70</td>
-            <td>Insurance for activities that may cause injury.</td>
-            <td><button class="pay-btn" onclick="openModal('British Insurance', '₱70')">Pay Now</button></td>
+            <td><img src="assets/images/492072841_1248072610662004_4559505064002138350_n.jpg" alt="Crimson Tees-Black"></td>
+            <td>Crimson Tees-Black</td>
+            <td>₱380</td>
+            <td>aethetic, cozy, and limited!</td>
+            <td><button class="pay-btn" onclick="openModal('Crimson Tees-Black', '₱380')">Pay Now</button></td>
           </tr>
           <tr>
-            <td>Gender Club</td>
+            <td><img src="assets/images/491408812_1248063133996285_9168787334770787980_n.jpg" alt="Gale Breaker-Red & white"></td>
+            <td>Gale Breaker-Red & white</td>
+            <td>₱1250</td>
+            <td>stylish, cozy and limited!</td>
+            <td><button class="pay-btn" onclick="openModal('Gale Breaker-Red & white', '₱1250')">Pay Now</button></td>
+          </tr>
+          <tr>
+            <td><img src="assets/images/492082170_1248063207329611_3262609591947020968_n.jpg" alt="Gale Breaker-black & White"></td>
+            <td>Gale Breaker-black & White</td>
+            <td>₱1250</td>
+            <td>stylish, cozy and limited!</td>
+            <td><button class="pay-btn" onclick="openModal('Gale Breaker-black & White', '₱1250')">Pay Now</button></td>
+          </tr>
+          <tr>
+            <td><img src="assets/images/489058310_1156505506486957_5200341004293562485_n.jpg" alt="CCS-JERSEY"></td>
+            <td>CCS-JERSEY</td>
+            <td>₱350</td>
+            <td>name customazation, cozy and limited!</td>
+            <td><button class="pay-btn" onclick="openModal('CCS-JERSEY', '₱350')">Pay Now</button></td>
+          </tr>
+          <tr>
+            <td><img src="assets/images/71XCTGRR7UL._AC_UF894,1000_QL80_.jpg" alt="CSS Lanyard"></td>
+            <td>CSS Lanyard</td>
             <td>₱150</td>
-            <td>Necessary enrollment Fee.</td>
-            <td><button class="pay-btn" onclick="openModal('Gender Club', '₱150')">Pay Now</button></td>
+            <td>comfortable and cozy</td>
+            <td><button class="pay-btn" onclick="openModal('CSS Lanyard', '₱150')">Pay Now</button></td>
           </tr>
           <tr>
-            <td>PHICSS</td>
-            <td>₱100</td>
-            <td>Necessary enrollment fee.</td>
-            <td><button class="pay-btn" onclick="openModal('PHICSS', '₱100')">Pay Now</button></td>
-          </tr>
-          <tr>
-            <td>Muslim Student Association</td>
-            <td>₱50</td>
-            <td>Only for Muslim.</td>
-            <td><button class="pay-btn" onclick="openModal('Muslim Student Association', '₱50')">Pay Now</button></td>
-          </tr>
-          <tr>
-            <td>ATHLETIC FEE</td>
-            <td>₱150</td>
-            <td>Support for Athlete in palaro.</td>
-            <td><button class="pay-btn" onclick="openModal('ATHLETIC FEE', '₱150')">Pay Now</button></td>
-          </tr>
-          <tr>
-            <td>University Digest</td>
-            <td>₱150</td>
-            <td>University digest.</td>
-            <td><button class="pay-btn" onclick="openModal('University Digest', '₱150')">Pay Now</button></td>
+            <td><img src="assets/images/travel-tumbler-2_2.jpeg" alt="Campus Tumbler"></td>
+            <td>Campus Tumbler</td>
+            <td>₱300</td>
+            <td>500ml stainless steel bottle</td>
+            <td><button class="pay-btn" onclick="openModal('Campus Tumbler', '₱300')">Pay Now</button></td>
           </tr>
         </tbody>
       </table>
