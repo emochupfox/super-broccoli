@@ -14,6 +14,10 @@ $(document).ready(function () {
       return;
     }
 
+    // Store username without @wmsu.ph in localStorage
+    const usernameWithoutDomain = username.toLowerCase().replace(/@wmsu\.ph$/, "");
+    localStorage.setItem("username", usernameWithoutDomain);
+
     if (role === "student") {
       window.location.href = "student-dashboard.html";
     } else if (role === "admin") {

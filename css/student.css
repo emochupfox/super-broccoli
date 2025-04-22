@@ -136,7 +136,7 @@ body {
    }
 }
  
-  .dashboard-content {
+.dashboard-content {
     padding: 40px;
     margin-left: 0;
     transition: margin-left 0.3s ease;
@@ -156,15 +156,52 @@ body {
   
   .scroll-container {
     display: flex;
-    overflow-x: auto;
     gap: 15px;
     padding: 20px 0;
     scroll-behavior: smooth;
     scrollbar-width: none;
+    /* Hide scrollbar */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
   }
   
   .scroll-container::-webkit-scrollbar {
     display: none; 
+  }
+  
+  /* Animation keyframes */
+  @keyframes scrollLeftToRight {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  @keyframes scrollRightToLeft {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  /* Animated containers */
+  #feeCardContainer {
+    animation: scrollLeftToRight 60s linear infinite;
+    white-space: nowrap;
+  }
+  
+  #merchContainer {
+    animation: scrollRightToLeft 60s linear infinite;
+    white-space: nowrap;
+  }
+  
+  /* Pause animation class */
+  .paused {
+    animation-play-state: paused !important;
   }
   
   .scroll-btn {
@@ -191,6 +228,7 @@ body {
     margin-right: 10px;
     text-align: left;
     box-shadow: 0 0 10px rgb(0, 0, 0);
+    display: inline-block;
   }
   
   .fee-card img {
@@ -661,4 +699,37 @@ h3 {
   margin: 4px 0;
   font-size: 1rem;
   color: #ccc;
+}
+.scrolling-section {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.scroll-container {
+  display: flex;
+  animation: scroll 40s linear infinite;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  50% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.scroll-container-wrapper {
+  overflow-x: auto; 
+  white-space: nowrap; 
+}
+
+.scroll-container .fee-card,
+.scroll-container .merch-card {
+  display: inline-block; 
+  margin-right: 20px;
 }

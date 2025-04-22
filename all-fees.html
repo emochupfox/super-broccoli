@@ -45,13 +45,13 @@
           <td><span class="status-label status-pending">Pending</span></td>
           <td><button class="pay-btn" onclick="openModal('Venom', '₱100')">Pay Now</button></td>
         </tr>
-        <tr data-status="paid">
+        <tr data-status="pending">
           <td><img src="assets/images/329690048_602724784656813_1097218126193312871_n (2).jpg" alt="CSS-CSC"></td>
           <td>CSS-CSC</td>
           <td>₱200</td>
           <td>necessary enrollment Fee.</td>
-          <td><span class="status-label status-paid">Paid</span></td>
-          <td></td>
+          <td><span class="status-label status-pending">Pending</span></td>
+          <td><button class="pay-btn" onclick="openModal('CSS-CSC', '₱200')">Pay Now</button></td>
         </tr>
         <tr data-status="pending">
           <td><img src="assets/images/369314453_6433344190034744_3370999456318746765_n.jpg" alt="british insurance"></td>
@@ -61,13 +61,13 @@
           <td><span class="status-label status-pending">Pending</span></td>
           <td><button class="pay-btn" onclick="openModal('British Insurance', '₱70')">Pay Now</button></td>
         </tr>
-        <tr data-status="paid">
+        <tr data-status="pending">
           <td><img src="assets/images/456294528_916614927174543_4614363158398336641_n.jpg" alt="Gender Club"></td>
           <td>Gender Club</td>
           <td>₱150</td>
           <td>necessary enrollment Fee.</td>
-          <td><span class="status-label status-paid">Paid</span></td>
-          <td></td>
+          <td><span class="status-label status-pending">Pending</span></td>
+          <td><button class="pay-btn" onclick="openModal('Gender Club', '₱150')">Pay Now</button></td>
         </tr>
         <tr data-status="pending">
           <td><img src="assets/images/476831502_1016323520527681_2759382191034826517_n.jpg" alt="PHICSS"></td>
@@ -77,13 +77,13 @@
           <td><span class="status-label status-pending">Pending</span></td>
           <td><button class="pay-btn" onclick="openModal('PHICSS', '₱100')">Pay Now</button></td>
         </tr>
-        <tr data-status="paid">
+        <tr data-status="pending">
           <td><img src="assets/images/308522109_435137252050094_3043565757327978958_n.png" alt="MSA"></td>
           <td>Muslim Student Association</td>
           <td>₱50</td>
           <td>Only for muslim.</td>
-          <td><span class="status-label status-paid">Paid</span></td>
-          <td></td>
+          <td><span class="status-label status-pending">Pending</span></td>
+          <td><button class="pay-btn" onclick="openModal('Muslim Student Association', '₱50')">Pay Now</button></td>
         </tr>
         <tr data-status="pending">
           <td><img src="assets/images/462557624_1319345839200938_7914858406326357209_n.jpg" alt="ATHLETIC FEE"></td>
@@ -91,15 +91,15 @@
           <td>₱150</td>
           <td>Support for Athlete in palaro.</td>
           <td><span class="status-label status-pending">Pending</span></td>
-          <td><button class="pay-btn" onclick="openModal('ATHELTIC FEE', '₱150')">Pay Now</button></td>
+          <td><button class="pay-btn" onclick="openModal('ATHLETIC FEE', '₱150')">Pay Now</button></td>
         </tr>
-        <tr data-status="paid">
+        <tr data-status="pending">
           <td><img src="assets/images/307697789_476190597858372_4111522872270449527_n.jpg" alt="University Digest"></td>
           <td>University Digest</td>
           <td>₱150</td>
           <td>University digest.</td>
-          <td><span class="status-label status-paid">Paid</span></td>
-          <td></td>
+          <td><span class="status-label status-pending">Pending</span></td>
+          <td><button class="pay-btn" onclick="openModal('University Digest', '₱150')">Pay Now</button></td>
         </tr>
       </tbody>
     </table>
@@ -134,7 +134,67 @@
   
     function submitPayment(event) {
       event.preventDefault();
-      alert("✅ Payment submitted successfully!");
+
+      const feeName = document.getElementById("feeName").value;
+      const amountText = document.getElementById("amount").value;
+      const price = parseFloat(amountText.replace(/[₱,]/g, ''));
+
+      if (!feeName || isNaN(price)) {
+        alert("Invalid payment details.");
+        return;
+      }
+
+      // Get current username
+      const username = localStorage.getItem("username");
+      if (!username) {
+        alert("User not logged in.");
+        return;
+      }
+
+      // Get existing payments for user from localStorage
+      let allPayments = JSON.parse(localStorage.getItem("payments")) || {};
+      let payments = allPayments[username] || [];
+
+      // Generate random 9-digit receipt ID
+      const receiptId = Math.floor(100000000 + Math.random() * 900000000).toString();
+
+      const datePaid = new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+      const receiptFile = "assets/receipts/" + receiptId + ".jpg"; // Simulated receipt file path
+
+      const paymentRecord = {
+        receiptId,
+        name: feeName,
+        price,
+        datePaid,
+        status: "Paid",
+        receiptFile
+      };
+
+      // Save payment for user
+      payments.push(paymentRecord);
+      allPayments[username] = payments;
+      localStorage.setItem("payments", JSON.stringify(allPayments));
+
+      // Update the fee row status and action button
+      const rows = document.querySelectorAll(".fee-table tbody tr");
+      rows.forEach(row => {
+        if (row.cells[1].textContent.trim() === feeName) {
+          row.setAttribute("data-status", "paid");
+          row.cells[4].innerHTML = '<span class="status-label status-paid">Paid</span>';
+          row.cells[5].innerHTML = "";
+        }
+      });
+
+      // Cache payment statuses in sessionStorage
+      const paymentStatuses = {};
+      rows.forEach(row => {
+        const fee = row.cells[1].textContent.trim();
+        const status = row.getAttribute("data-status");
+        paymentStatuses[fee] = status;
+      });
+      sessionStorage.setItem("paymentStatuses", JSON.stringify(paymentStatuses));
+
+      alert("✅ Payment for \"" + feeName + "\" submitted successfully! Receipt #" + receiptId + " created.");
       closeModal();
     }
   
@@ -158,7 +218,39 @@
       });
     }
   </script>
-  
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const username = localStorage.getItem("username");
+      if (!username) return;
+      const allPayments = JSON.parse(localStorage.getItem("payments")) || {};
+      const payments = allPayments[username] || [];
+      const rows = document.querySelectorAll(".fee-table tbody tr");
+
+      rows.forEach(row => {
+        const feeName = row.cells[1].textContent.trim();
+        const isPaid = payments.some(p => p.name === feeName && p.status === "Paid");
+
+        const statusCell = row.cells[4];
+        const actionCell = row.cells[5];
+
+        if (isPaid) {
+          row.setAttribute("data-status", "paid");
+          statusCell.innerHTML = '<span class="status-label status-paid">Paid</span>';
+          actionCell.innerHTML = "";
+        } else {
+          row.setAttribute("data-status", "pending");
+          statusCell.innerHTML = '<span class="status-label status-pending">Pending</span>';
+          // Ensure pay button exists
+          if (!actionCell.querySelector("button.pay-btn")) {
+            const feeNameText = row.cells[1].textContent.trim();
+            const priceText = row.cells[2].textContent.trim();
+            actionCell.innerHTML = '<button class="pay-btn" onclick="openModal(\'' + feeNameText + '\', \'' + priceText + '\')">Pay Now</button>';
+          }
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
