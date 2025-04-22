@@ -47,14 +47,7 @@ function scrollMerch() {
   }
 }
 
-// Filter fee cards by status
-function filterFees(status) {
-  const cards = document.querySelectorAll('#feeCardContainer .fee-card');
-  cards.forEach(card => {
-    const feeStatus = card.getAttribute('data-status');
-    card.style.display = (status === 'all' || status === feeStatus) ? 'inline-block' : 'none';
-  });
-}
+
 
 window.onload = () => {
   renderDepartments();
