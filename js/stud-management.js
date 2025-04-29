@@ -4,39 +4,41 @@ const students = [
   { name: "Salilig, Gian", id: "202301245", course: "BSCS", section: "2C", status: "Pending" },
   { name: "Flore, JM", id: "202301256", course: "BSCS", section: "2C", status: "Pending" },
   { name: "Aleria, Angelo", id: "202301267", course: "BSCS", section: "2C", status: "Pending" },
-  { name: "Bobon, Stephen", id: "202301278", course: "BSCS", section: "2C", status: "Pending" },
-  { name: "Felix, Cyrell", id: "202301289", course: "BSCS", section: "2C", status: "Pending" },
-  { name: "Manolo, Kyle", id: "202301282", course: "BSCS", section: "2C", status: "Pending" }
+  { name: "Bobon, Stephen", id: "202301278", course: "BSCS", section: "2C", status: "Pending" }
 ];
 
-const rowsPerPage = 6;
-let currentPage = 1;
-
-function renderTablePage(page) {
-  const tbody = document.getElementById("studentTableBody");
+function loadStudents() {
+  const tbody = document.getElementById('studentTableBody');
   tbody.innerHTML = "";
 
-  const start = (page - 1) * rowsPerPage;
-  const end = start + rowsPerPage;
-  const pageStudents = students.slice(start, end);
+  students.forEach(student => {
+    const tr = document.createElement('tr');
 
-  pageStudents.forEach((student, index) => {
-    const row = document.createElement("tr");
-    row.innerHTML = `
+    tr.innerHTML = `
       <td>${student.name}</td>
       <td>${student.id}</td>
       <td>${student.course}</td>
       <td>${student.section}</td>
       <td>${student.status}</td>
       <td>
-        <button class="view-btn" onclick="openModal(${start + index})">View</button>
+        <button class="view-btn">View</button>
         <button class="edit-btn">Edit</button>
         <button class="remove-btn">Remove</button>
       </td>
     `;
-    tbody.appendChild(row);
+
+    tbody.appendChild(tr);
   });
 }
+
+function logout() {
+  if (confirm("Are you sure you want to logout?")) {
+    window.location.href = "index.html";
+  }
+}
+
+window.onload = loadStudents;
+
 
 function renderPagination() {
   const pageCount = Math.ceil(students.length / rowsPerPage);

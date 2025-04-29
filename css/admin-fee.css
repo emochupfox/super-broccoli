@@ -1,0 +1,115 @@
+/*STYLE FOR ADMIN STUD FEES*/
+
+.fee-management-container {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+  }
+  
+  .fee-form {
+    flex: 0 0 400px;
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  }
+  
+  .fee-table {
+    flex: 1;
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    overflow-x: auto;
+    margin-left: 1rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-group label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+    font-size: 14px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+  }
+  
+  .add-fee-btn {
+    background-color: #065f11;
+    color: white;
+    padding: 0.75rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    width: 100%;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 15px;
+    margin-top: 0.5rem;
+  }
+  
+  .add-fee-btn:hover {
+    background-color: #044d0d;
+  }
+  
+  .admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  
+  .admin-table th,
+  .admin-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+  }
+  
+  .admin-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+
+  .status-label.pending {
+    background-color: #edb200;
+    color: black;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 13px;
+  }
+  
+  .remove-btn {
+    background-color: #8d0000;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  
+  /* Stack on smaller screens */
+  @media (max-width: 900px) {
+    .fee-management-container {
+      flex-direction: column;
+    }
+  
+    .fee-table {
+      margin-left: 0;
+      margin-top: 2rem;
+    }
+  }
+
+  

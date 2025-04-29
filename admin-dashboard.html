@@ -1,72 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin Dashboard</title>
-  <link rel="stylesheet" href="css/main.css" />
-  <link rel="stylesheet" href="css/admin.css" />
-  <style>
-    .admin-shortcuts {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 40px;
-    }
-
-    .shortcut-btn {
-      background-color: #004d00;
-      color: white;
-      padding: 14px 22px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1rem;
-      transition: background-color 0.2s ease;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    .shortcut-btn:hover {
-      background-color: #009944;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - PayFees</title>
+  <link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
-  <header class="navbar">
-    <div class="brand">PAYFEES ADMIN</div>
-    <nav class="nav-links">
-      <a href="#">Dashboard</a>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2>PAYFEES ADMIN</h2>
+    <nav class="sidebar-nav">
+      <a href="admin-dashboard.html" class="active">Dashboard</a>
       <a href="admin-students.html">Students</a>
       <a href="admin-fees.html">Fees</a>
-      <a href="admin-requests.html">PAYMENT REQUESTS</a>
+      <a href="admin-requests.html">Payment Requests</a>
       <a href="#" onclick="logout()">Logout</a>
     </nav>
-  </header>
+  </aside>
+  
 
-  <main class="admin-dashboard">
-    <section class="admin-card">
-      <h2>Pending Clearances</h2>
-      <div id="pendingList">
-        <p class="placeholder">No pending clearances yet.</p>
+  <!-- Main Content -->
+  <div class="main-content">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="topbar-title">Dashboard</div>
+      <div class="profile-info">
+        <span>👤 Admin</span>
+      </div>
+    </header>
+
+    <!-- Summary Cards -->
+    <section class="cards-section">
+      <div class="card">
+        <h3>Total Students</h3>
+        <p id="totalStudents">0</p>
+      </div>
+      <div class="card">
+        <h3>Total Fees</h3>
+        <p id="totalFees">₱0</p>
+      </div>
+      <div class="card">
+        <h3>Pending Requests</h3>
+        <p id="pendingRequests">0</p>
+      </div>
+      <div class="card">
+        <h3>Approved Requests</h3>
+        <p id="approvedRequests">0</p>
       </div>
     </section>
 
-    <section class="admin-card">
-      <h2>Manage Fees</h2>
-      <button class="primary-btn" onclick="openAddFee()">+ Add New Fee</button>
-    </section>
-
-    <!-- ADMIN SHORTCUT HERE -->
-    <section class="admin-card">
+    <!-- Quick Access -->
+    <section class="quick-access">
       <h2>Quick Access</h2>
-      <div class="admin-shortcuts">
-        <a href="admin-students.html" class="shortcut-btn">👨‍🎓 Manage Students</a>
-        <a href="admin-fees.html" class="shortcut-btn">💰 Manage Fees</a>
-        <a href="admin-requests.html" class="shortcut-btn">📬 View Requests</a>
+      <div class="quick-buttons">
+        <a href="admin-students.html" class="quick-btn">Manage Students</a>
+        <a href="admin-fees.html" class="quick-btn">Manage Fees</a>
+        <a href="admin-requests.html" class="quick-btn">View Requests</a>
       </div>
     </section>
-  </main>
+
+  </div>
 
   <script src="js/admin.js"></script>
+
 </body>
 </html>

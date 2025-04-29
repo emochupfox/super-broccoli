@@ -1,59 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin - Manage Students</title>
-  <link rel="stylesheet" href="css/admin.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Students - PayFees Admin</title>
+  <link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
-  <header class="navbar">
-    <div class="brand">PAYFEES ADMIN</div>
-    <nav class="nav-links">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2>PAYFEES ADMIN</h2>
+    <nav class="sidebar-nav">
       <a href="admin-dashboard.html">Dashboard</a>
       <a href="admin-students.html" class="active">Students</a>
       <a href="admin-fees.html">Fees</a>
-      <a href="admin-requests.html">PAYMENT REQUESTS</a>
+      <a href="admin-requests.html">Payment Requests</a>
       <a href="#" onclick="logout()">Logout</a>
     </nav>
-  </header>
+  </aside>
+  
 
-  <main class="admin-container">
-    <h2>Student Management</h2>
+  <!-- Main Content -->
+  <div class="main-content">
 
-    <div class="table-wrapper">
-      <table class="student-table" id="studentTable">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>ID</th>
-            <th>Course</th>
-            <th>Year/Section</th>
-            <th>Status</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody id="studentTableBody">
-          <!-- Filled by JS -->
-        </tbody>
-      </table>
-    </div>
-    <div id="pagination" class="pagination"></div>
-  </main>
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="topbar-title">Manage Students</div>
+      <div class="profile-info">
+        <span>👤 Admin</span>
+      </div>
+    </header>
 
-  <!-- View Modal -->
-  <div id="viewModal" class="modal">
-    <div class="modal-content">
-      <span class="close-btn" onclick="closeModal()">&times;</span>
-      <h3>Student Information</h3>
-      <p><strong>Name:</strong> <span id="modalName"></span></p>
-      <p><strong>Student ID:</strong> <span id="modalID"></span></p>
-      <p><strong>Course:</strong> <span id="modalCourse"></span></p>
-      <p><strong>Year/Section:</strong> <span id="modalSection"></span></p>
-      <p><strong>Status:</strong> <span id="modalStatus"></span></p>
-    </div>
+    <!-- Table Section -->
+    <section class="table-section">
+      <div class="table-wrapper">
+        <table class="student-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>ID</th>
+              <th>Course</th>
+              <th>Year/Section</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="studentTableBody">
+            <!-- Students will be dynamically inserted here -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
   </div>
 
-  <script src="js/stud-management.js"></script>
+  <script src="js/student.js"></script>
+
 </body>
 </html>

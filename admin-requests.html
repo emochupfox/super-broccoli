@@ -7,16 +7,17 @@
   <link rel="stylesheet" href="css/admin.css" />
 </head>
 <body>
-  <header class="navbar">
-    <div class="brand">PAYFEES ADMIN</div>
-    <nav class="nav-links">
-      <a href="admin-dashboard.html">Dashboard</a>
-      <a href="admin-students.html">Students</a>
-      <a href="admin-fees.html">Fees</a>
-      <a href="admin-requests.html" class="active">Requests</a>
-      <a href="#">Logout</a>
-    </nav>
-  </header>
+  <div class="admin-layout">
+    <aside class="sidebar">
+      <h2>PAYFEES ADMIN</h2>
+      <nav class="sidebar-nav">
+        <a href="admin-dashboard.html">Dashboard</a>
+        <a href="admin-students.html">Students</a>
+        <a href="admin-fees.html">Fees</a>
+        <a href="admin-requests.html" class="active">Payment Requests</a>
+        <a href="#" onclick="logout()">Logout</a>
+      </nav>
+    </aside>
 
   <main class="admin-container">
     <h2>Payment Requests</h2>
