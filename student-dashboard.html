@@ -287,6 +287,25 @@
 
   </main>
 
+  <script>
+    function toggleDropdown() {
+      const dropdownContent = document.querySelector('.dropdown-content');
+      if (dropdownContent.style.display === 'block') {
+        dropdownContent.style.display = 'none';
+      } else {
+        dropdownContent.style.display = 'block';
+      }
+    }
+
+    function toggleNav() {
+      const navLinks = document.getElementById('navLinks');
+      if (navLinks.style.display === 'flex') {
+        navLinks.style.display = 'none';
+      } else {
+        navLinks.style.display = 'flex';
+      }
+    }
+  </script>
   <script src="js/student.js"></script>
 </body>
 </html>
